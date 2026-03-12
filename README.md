@@ -4,27 +4,20 @@ A curated collection of 12 distinctive Typora themes, designed for writing requi
 
 ## Themes
 
-### Light Themes
-
-| Theme | Preview | Description |
-|-------|---------|-------------|
-| **Glacier** | ![Glacier](screenshots/glacier.png) | Cool icy blue-white with clean geometric lines. Space Grotesk throughout. Calm, focused, technical. |
-| **Horizon** | ![Horizon](screenshots/horizon.png) | Warm coral and terracotta accents on cream. H1 with distinctive left coral border. Energetic yet professional. |
-| **Sandstone** | ![Sandstone](screenshots/sandstone.png) | Desert-inspired warm earth tones. Source Serif 4 body text for a book-like reading experience. Decorative three-dot HR dividers. |
-| **Contrast** | ![Contrast](screenshots/contrast.png) | Maximum contrast — pure black on white with electric blue (#0055ff) accents. Black table headers, bold borders. Zero ambiguity. |
-| **Brutalist** | ![Brutalist](screenshots/brutalist.png) | Raw Bauhaus-inspired design. 3em uppercase H1, thick black borders, zero border-radius. Bold text rendered as white-on-red. Unapologetic. |
-
-### Dark Themes
-
-| Theme | Preview | Description |
-|-------|---------|-------------|
-| **Onyx** | ![Onyx](screenshots/onyx.png) | Warm charcoal with restrained gold accents. Editorial luxury. Like a high-end magazine's dark mode. |
-| **Carbon** | ![Carbon](screenshots/carbon.png) | Near-black monochrome with surgical teal accents. H2 prefixed with `//`. Minimal horizontal-only table borders. Developer-grade precision. |
-| **Nordic** | ![Nordic](screenshots/nordic.png) | Nord color palette — muted polar night blues with frost and aurora accent colors. Green checkboxes for a natural checked state. |
-| **Graphite** | ![Graphite](screenshots/graphite.png) | Unique mid-tone gray (not too dark, not too light) with emerald teal accents. Uppercase H1, teal-bordered H3. Reduced contrast for extended sessions. |
-| **Ink** | ![Ink](screenshots/ink.png) | Deep midnight navy with warm cream text and ink-gold accents. Literary and warm despite being dark. Gold gradient H1 underline. |
-| **Aurora** | ![Aurora](screenshots/aurora.png) | Northern Lights theme — green-to-cyan-to-purple gradients on polar night black. Gradient flows through H1 underline, blockquote borders, HR, and scrollbar. |
-| **Zenith** | ![Zenith](screenshots/zenith.png) | Premium SaaS-inspired layered dark surfaces with amber accents. Gradient text headings, glowing code blocks, uppercase amber table headers. |
+| Theme | Preview | Type | Description |
+|-------|---------|------|-------------|
+| **Aurora** | ![Aurora](screenshots/aurora.jpg) | Dark | Northern Lights — green-to-cyan-to-purple gradients on polar night black. Gradient H1 underline, blockquote borders, HR. |
+| **Brutalist** | ![Brutalist](screenshots/brutalist.jpg) | Light | Raw Bauhaus-inspired. 3em uppercase H1, thick black borders, zero border-radius. Bold text as white-on-red. |
+| **Carbon** | ![Carbon](screenshots/carbon.jpg) | Dark | Near-black monochrome with surgical teal accents. H2 prefixed with `//`. Horizontal-only table borders. |
+| **Contrast** | ![Contrast](screenshots/contrast.jpg) | Light | Maximum contrast — pure black on white with electric blue accents. Black table headers, bold borders. |
+| **Glacier** | ![Glacier](screenshots/glacier.jpg) | Light | Cool icy blue-white with clean geometric lines. Space Grotesk throughout. Calm, focused, technical. |
+| **Graphite** | ![Graphite](screenshots/graphite.jpg) | Dark | Unique mid-tone gray with emerald teal accents. Uppercase H1, teal-bordered H3. Reduced contrast for extended sessions. |
+| **Horizon** | ![Horizon](screenshots/horizon.jpg) | Light | Warm coral and terracotta accents on cream. H1 with distinctive left coral border. Energetic yet professional. |
+| **Ink** | ![Ink](screenshots/ink.jpg) | Dark | Deep midnight navy with warm cream text and ink-gold accents. Literary and warm. Gold gradient H1 underline. |
+| **Nordic** | ![Nordic](screenshots/nordic.jpg) | Dark | Nord color palette — muted polar night blues with frost and aurora accent colors. Green checkboxes. |
+| **Onyx** | ![Onyx](screenshots/onyx.jpg) | Dark | Warm charcoal with restrained gold accents. Editorial luxury. Like a high-end magazine's dark mode. |
+| **Sandstone** | ![Sandstone](screenshots/sandstone.jpg) | Light | Desert-inspired warm earth tones. Source Serif 4 body for a book-like reading experience. |
+| **Zenith** | ![Zenith](screenshots/zenith.jpg) | Dark | Premium SaaS-inspired layered dark surfaces with amber accents. Gradient text headings, glowing code blocks. |
 
 ## Typography
 
