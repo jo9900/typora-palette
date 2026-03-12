@@ -1,0 +1,1519 @@
+/*
+ * Aurora — A dark Typora theme inspired by the Aurora Borealis.
+ * Deep polar night background with ethereal gradients of green, cyan,
+ * and purple flowing through borders, underlines, and accents.
+ * Luminous yet restrained, like the real Northern Lights.
+ */
+
+/* =========================================================================
+   Font Faces
+   ========================================================================= */
+
+@font-face {
+  font-family: 'Space Grotesk';
+  src: url('./fonts/space-grotesk/SpaceGrotesk-Latin.woff2') format('woff2');
+  font-weight: 100 900;
+  font-style: normal;
+  font-display: swap;
+}
+
+@font-face {
+  font-family: 'Inter';
+  src: url('./fonts/inter/Inter-Latin.woff2') format('woff2');
+  font-weight: 100 900;
+  font-style: normal;
+  font-display: swap;
+}
+
+@font-face {
+  font-family: 'JetBrains Mono';
+  src: url('./fonts/jetbrains-mono/JetBrainsMono-Latin.woff2') format('woff2');
+  font-weight: 100 800;
+  font-style: normal;
+  font-display: swap;
+}
+
+/* =========================================================================
+   CSS Variables — Aurora Palette
+   ========================================================================= */
+
+:root {
+  /* Polar Night Sky */
+  --bg-color: #0a0e17;
+  --bg-secondary: #111827;
+  --bg-elevated: #1a2332;
+  --bg-deep: #080c14;
+
+  /* Starlight Text */
+  --text-color: #c8d6e5;
+  --heading-color: #e8f0f8;
+  --text-muted: #7a8a9e;
+
+  /* Aurora Colors */
+  --aurora-green: #64d8a8;
+  --aurora-cyan: #48b8d0;
+  --aurora-purple: #8b6cc4;
+  --aurora-gradient: linear-gradient(135deg, #64d8a8, #48b8d0, #8b6cc4);
+  --aurora-gradient-h: linear-gradient(90deg, #64d8a8, #48b8d0, #8b6cc4);
+
+  /* Typora system variables */
+  --md-char-color: #3a4a5e;
+  --meta-content-color: #7a8a9e;
+  --primary-color: #64d8a8;
+  --primary-btn-border-color: #4ec898;
+  --primary-btn-text-color: #0a0e17;
+  --window-border: 1px solid #1e2a3a;
+  --active-file-bg-color: #111827;
+  --active-file-text-color: #e8f0f8;
+  --active-file-border-color: #64d8a8;
+  --side-bar-bg-color: #080c14;
+  --item-hover-bg-color: #111827;
+  --item-hover-text-color: #e8f0f8;
+  --monospace: 'JetBrains Mono', 'SF Mono', Menlo, monospace;
+
+  /* Extended */
+  --link-color: #64d8a8;
+  --code-bg: #0f1520;
+  --code-border: #1e2a3a;
+  --blockquote-bg: rgba(100, 216, 168, 0.04);
+  --table-header-bg: #141e2c;
+  --table-alt-row: #0d1320;
+  --selection-color: rgba(100, 216, 168, 0.2);
+  --border-color: #1e2a3a;
+  --heading-font: 'Space Grotesk', -apple-system, BlinkMacSystemFont, sans-serif;
+  --body-font: 'Inter', -apple-system, BlinkMacSystemFont, 'Segoe UI', Helvetica, Arial, sans-serif;
+}
+
+/* =========================================================================
+   Base
+   ========================================================================= */
+
+html {
+  font-size: 16px;
+  -webkit-font-smoothing: antialiased;
+  -moz-osx-font-smoothing: grayscale;
+}
+
+body {
+  font-family: var(--body-font);
+  color: var(--text-color);
+  background-color: var(--bg-color);
+  line-height: 1.75;
+  -webkit-text-size-adjust: 100%;
+}
+
+/* =========================================================================
+   Writing Area
+   ========================================================================= */
+
+#write {
+  max-width: 850px;
+  margin: 0 auto;
+  padding: 30px 30px 100px;
+}
+
+#write > ul:first-child,
+#write > ol:first-child {
+  margin-top: 30px;
+}
+
+/* =========================================================================
+   Selection
+   ========================================================================= */
+
+::selection {
+  background: var(--selection-color);
+}
+
+/* =========================================================================
+   Headings
+   ========================================================================= */
+
+h1, h2, h3, h4, h5, h6 {
+  font-family: var(--heading-font);
+  color: var(--heading-color);
+  margin-top: 1.5em;
+  margin-bottom: 0.6em;
+  line-height: 1.3;
+}
+
+/* H1 — Signature element with aurora gradient underline */
+h1 {
+  font-size: 2.2em;
+  font-weight: 700;
+  letter-spacing: -0.03em;
+  padding-bottom: 14px;
+  margin-top: 1.2em;
+  position: relative;
+  border: none;
+}
+
+h1::after {
+  content: '';
+  position: absolute;
+  bottom: 0;
+  left: 0;
+  width: 100%;
+  height: 3px;
+  background: linear-gradient(90deg, #64d8a8, #48b8d0, #8b6cc4);
+  border-radius: 2px;
+}
+
+/* H2 — with small aurora-green dot before text */
+h2 {
+  font-size: 1.6em;
+  font-weight: 600;
+  position: relative;
+  padding-left: 16px;
+}
+
+h2::before {
+  content: '';
+  position: absolute;
+  left: 0;
+  top: 0.55em;
+  width: 4px;
+  height: 4px;
+  border-radius: 50%;
+  background: #64d8a8;
+  box-shadow: 0 0 6px rgba(100, 216, 168, 0.4);
+}
+
+h3 {
+  font-size: 1.25em;
+  font-weight: 600;
+}
+
+h4 {
+  font-size: 1.1em;
+  font-weight: 600;
+  color: var(--text-color);
+}
+
+h5 {
+  font-size: 1em;
+  font-weight: 600;
+  color: var(--text-muted);
+}
+
+h6 {
+  font-size: 0.9em;
+  font-weight: 600;
+  color: var(--text-muted);
+}
+
+#write > h1:first-child,
+#write > h2:first-child,
+#write > h3:first-child,
+#write > h4:first-child,
+#write > h5:first-child,
+#write > h6:first-child {
+  margin-top: 0;
+}
+
+#write > h1:first-child + h2,
+#write > h2:first-child + h3,
+#write > h3:first-child + h4 {
+  margin-top: 0.8em;
+}
+
+/* =========================================================================
+   Paragraphs
+   ========================================================================= */
+
+p,
+#write p {
+  line-height: 1.75;
+  margin-top: 0;
+  margin-bottom: 1em;
+}
+
+/* =========================================================================
+   Strong & Emphasis
+   ========================================================================= */
+
+strong,
+#write strong {
+  color: var(--heading-color);
+  font-weight: 600;
+}
+
+em {
+  color: inherit;
+  font-style: italic;
+}
+
+/* =========================================================================
+   Links — Aurora green with glow on hover
+   ========================================================================= */
+
+a {
+  color: var(--aurora-green);
+  text-decoration: none;
+  transition: color 0.2s ease, text-shadow 0.2s ease;
+}
+
+a:hover {
+  color: #7ee4bc;
+  text-shadow: 0 0 8px rgba(100, 216, 168, 0.3);
+}
+
+#write a {
+  color: var(--aurora-green);
+  text-decoration: none;
+  border-bottom: 1px solid rgba(100, 216, 168, 0.3);
+  transition: color 0.2s ease, border-bottom-color 0.2s ease, text-shadow 0.2s ease;
+}
+
+#write a:hover {
+  color: #7ee4bc;
+  border-bottom-color: rgba(100, 216, 168, 0.6);
+  text-shadow: 0 0 8px rgba(100, 216, 168, 0.3);
+}
+
+/* =========================================================================
+   Mark / Highlight
+   ========================================================================= */
+
+mark {
+  background-color: rgba(72, 184, 208, 0.2);
+  color: var(--aurora-cyan);
+  padding: 1px 4px;
+  border-radius: 3px;
+}
+
+/* =========================================================================
+   Horizontal Rule — Aurora gradient line
+   ========================================================================= */
+
+hr {
+  border: none;
+  height: 2px;
+  margin: 2em 0;
+  background: linear-gradient(90deg, #64d8a8, #48b8d0, #8b6cc4);
+  border-radius: 2px;
+  opacity: 0.6;
+}
+
+/* =========================================================================
+   Blockquotes — Aurora gradient left border
+   ========================================================================= */
+
+blockquote {
+  margin: 1em 0;
+  padding: 0.5em 1em 0.5em 1.2em;
+  color: var(--text-muted);
+  background-color: var(--blockquote-bg);
+  border-left: 4px solid;
+  border-image: linear-gradient(to bottom, #64d8a8, #48b8d0, #8b6cc4) 1;
+  border-radius: 0 4px 4px 0;
+}
+
+blockquote p {
+  margin-bottom: 0.5em;
+}
+
+blockquote p:last-child {
+  margin-bottom: 0;
+}
+
+blockquote blockquote {
+  margin-left: 0;
+  border-image: linear-gradient(to bottom, #48b8d0, #8b6cc4) 1;
+}
+
+/* =========================================================================
+   Lists
+   ========================================================================= */
+
+ul, ol {
+  padding-left: 1.5em;
+  margin-top: 0;
+  margin-bottom: 1em;
+}
+
+li {
+  margin-bottom: 0.25em;
+  line-height: 1.75;
+}
+
+li > p {
+  margin-bottom: 0.5em;
+}
+
+ul ul, ol ol, ul ol, ol ul {
+  margin-top: 0.25em;
+  margin-bottom: 0.25em;
+}
+
+/* =========================================================================
+   Task Lists — Aurora gradient for checked items
+   ========================================================================= */
+
+.task-list {
+  padding-left: 0;
+}
+
+.md-task-list-item {
+  list-style-type: none;
+  padding-left: 1.25rem;
+}
+
+.md-task-list-item > input {
+  -webkit-appearance: none;
+  margin-left: -1.3em;
+  margin-top: 0.3rem;
+  top: auto;
+}
+
+.md-task-list-item > input:before {
+  content: "";
+  display: inline-block;
+  width: 0.875rem;
+  height: 0.875rem;
+  vertical-align: middle;
+  text-align: center;
+  border: 1px solid #2a3a4a;
+  background-color: var(--bg-secondary);
+  border-radius: 3px;
+  margin-top: -0.4rem;
+  transition: background 0.15s ease, border-color 0.15s ease;
+}
+
+.md-task-list-item > input:checked:before,
+.md-task-list-item > input[checked]:before {
+  content: '\221A';
+  font-size: 0.625rem;
+  line-height: 0.625rem;
+  color: #0a0e17;
+  background: linear-gradient(135deg, #64d8a8, #48b8d0);
+  border-color: #64d8a8;
+  border-radius: 3px;
+}
+
+.md-task-list-item.task-list-done > p {
+  text-decoration: line-through;
+  color: var(--md-char-color);
+}
+
+/* =========================================================================
+   Code — Inline
+   ========================================================================= */
+
+code,
+tt {
+  font-family: var(--monospace);
+  font-size: 0.9em;
+  background-color: var(--code-bg);
+  color: var(--aurora-green);
+  border: 1px solid var(--code-border);
+  border-radius: 4px;
+  padding: 2px 6px;
+}
+
+#write code {
+  font-family: var(--monospace);
+  font-size: 0.9em;
+  background-color: var(--code-bg);
+  color: var(--aurora-green);
+  border: 1px solid var(--code-border);
+  border-radius: 4px;
+  padding: 2px 6px;
+}
+
+/* =========================================================================
+   Code — Fenced Blocks
+   ========================================================================= */
+
+pre {
+  margin: 1.2em 0;
+}
+
+.md-fences,
+pre.md-fences {
+  font-family: var(--monospace);
+  font-size: 0.9em;
+  background-color: var(--code-bg);
+  border: 1px solid var(--code-border);
+  border-radius: 8px;
+  padding: 16px;
+  overflow-x: auto;
+  line-height: 1.55;
+  color: var(--text-color);
+}
+
+pre.md-fences code,
+.md-fences code {
+  background: none;
+  border: none;
+  padding: 0;
+  font-size: inherit;
+  color: inherit;
+}
+
+.md-fences .code-tooltip {
+  background-color: var(--bg-secondary);
+  border: 1px solid var(--code-border);
+  border-radius: 4px;
+  color: var(--text-muted);
+  bottom: -1.6em;
+}
+
+/* CodeMirror overrides for code blocks */
+.CodeMirror pre {
+  font-family: var(--monospace);
+}
+
+.CodeMirror-linenumber {
+  color: var(--md-char-color);
+}
+
+/* =========================================================================
+   CodeMirror Syntax — Aurora Colors
+   Green for strings, cyan for keywords, purple for types
+   ========================================================================= */
+
+.cm-s-inner {
+  background-color: var(--code-bg) !important;
+  color: var(--text-color) !important;
+}
+
+.cm-s-inner .cm-header {
+  color: var(--heading-color);
+  font-weight: 600;
+}
+
+.cm-s-inner .cm-link {
+  color: var(--aurora-green);
+  text-decoration: none;
+}
+
+.cm-s-inner .cm-url {
+  color: var(--text-muted);
+}
+
+/* Strings: aurora green */
+.cm-s-inner .cm-string {
+  color: #64d8a8;
+}
+
+/* Keywords: aurora cyan */
+.cm-s-inner .cm-keyword {
+  color: #48b8d0;
+}
+
+/* Functions / definitions: lighter cyan */
+.cm-s-inner .cm-def {
+  color: #7ee4bc;
+}
+
+/* Variables: silver text */
+.cm-s-inner .cm-variable {
+  color: var(--text-color);
+}
+
+.cm-s-inner .cm-variable-2 {
+  color: #a0d0e0;
+}
+
+/* Comments */
+.cm-s-inner .cm-comment {
+  color: #3a4a5e;
+  font-style: italic;
+}
+
+/* Numbers: muted aurora cyan */
+.cm-s-inner .cm-number {
+  color: #48b8d0;
+}
+
+/* Atoms: purple */
+.cm-s-inner .cm-atom {
+  color: #8b6cc4;
+}
+
+/* Tags: aurora cyan */
+.cm-s-inner .cm-tag {
+  color: #48b8d0;
+}
+
+/* Attributes: aurora green */
+.cm-s-inner .cm-attribute {
+  color: #64d8a8;
+}
+
+/* Operators: cyan */
+.cm-s-inner .cm-operator {
+  color: #48b8d0;
+}
+
+/* Properties: lighter green */
+.cm-s-inner .cm-property {
+  color: #7ee4bc;
+}
+
+/* Builtins: purple */
+.cm-s-inner .cm-builtin {
+  color: #8b6cc4;
+}
+
+/* Qualifiers: cyan */
+.cm-s-inner .cm-qualifier {
+  color: #48b8d0;
+}
+
+/* Brackets */
+.cm-s-inner .cm-bracket {
+  color: var(--text-muted);
+}
+
+/* Meta */
+.cm-s-inner .cm-meta {
+  color: var(--text-muted);
+}
+
+/* Type: aurora purple */
+.cm-s-inner .cm-type {
+  color: #8b6cc4;
+}
+
+/* Error: warm red */
+.cm-s-inner .cm-error {
+  color: #e06070;
+}
+
+/* String-2: slightly different green */
+.cm-s-inner .cm-string-2 {
+  color: #50c898;
+}
+
+/* Variable-3 / type references: purple */
+.cm-s-inner .cm-variable-3 {
+  color: #8b6cc4;
+}
+
+/* CodeMirror gutters, cursor, selection */
+.cm-s-inner .CodeMirror-gutters {
+  background-color: var(--code-bg);
+  border-right: 1px solid var(--code-border);
+}
+
+.cm-s-inner .CodeMirror-linenumber {
+  color: var(--md-char-color);
+}
+
+.cm-s-inner .CodeMirror-cursor {
+  border-left: 2px solid var(--aurora-green);
+}
+
+.cm-s-inner .CodeMirror-selected,
+.cm-s-inner .CodeMirror-selectedtext {
+  background: var(--selection-color) !important;
+}
+
+.CodeMirror-cursor {
+  border-left: 2px solid var(--aurora-green);
+}
+
+.CodeMirror-selectedtext,
+.CodeMirror-selected {
+  background: var(--selection-color) !important;
+}
+
+.CodeMirror-gutters {
+  background-color: var(--code-bg);
+  border-right: 1px solid var(--code-border);
+}
+
+/* Active line highlight */
+.cm-s-inner .CodeMirror-activeline-background,
+.CodeMirror-activeline-background {
+  background: rgba(100, 216, 168, 0.04) !important;
+}
+
+/* Matching brackets */
+.cm-s-inner .CodeMirror-matchingbracket {
+  color: var(--aurora-green) !important;
+  text-decoration: underline;
+}
+
+/* =========================================================================
+   Tables — Clean dark with aurora gradient header border
+   ========================================================================= */
+
+table {
+  border-collapse: collapse;
+  width: 100%;
+  margin: 1.2em 0;
+  font-size: 0.95em;
+}
+
+thead {
+  background-color: var(--table-header-bg);
+  border-bottom: 2px solid transparent;
+  background-clip: padding-box;
+}
+
+/* Aurora gradient bottom border on header */
+thead tr {
+  border-bottom: 2px solid;
+  border-image: linear-gradient(90deg, #64d8a8, #48b8d0, #8b6cc4) 1;
+}
+
+th {
+  font-weight: 600;
+  font-family: var(--heading-font);
+  color: var(--heading-color);
+  padding: 10px 14px;
+  border: 1px solid var(--border-color);
+  text-align: left;
+}
+
+td {
+  padding: 8px 14px;
+  border: 1px solid var(--border-color);
+}
+
+tr:nth-child(2n) {
+  background-color: var(--table-alt-row);
+}
+
+tr:hover {
+  background-color: rgba(100, 216, 168, 0.04);
+}
+
+/* =========================================================================
+   Images
+   ========================================================================= */
+
+img {
+  max-width: 100%;
+  border-radius: 6px;
+}
+
+#write img {
+  margin: 0.5em 0;
+}
+
+img + br + .md-image-link,
+p > .md-image:only-child {
+  display: block;
+  text-align: center;
+}
+
+/* =========================================================================
+   Footnotes
+   ========================================================================= */
+
+.md-footnote {
+  font-size: 0.85em;
+  color: var(--aurora-green);
+}
+
+sup.md-footnote {
+  background-color: rgba(100, 216, 168, 0.1);
+  color: var(--aurora-green);
+  padding: 1px 5px;
+  border-radius: 3px;
+  cursor: pointer;
+  transition: background-color 0.15s ease;
+}
+
+sup.md-footnote:hover {
+  background-color: rgba(100, 216, 168, 0.2);
+}
+
+.footnotes-area {
+  font-size: 0.9em;
+  color: var(--text-muted);
+  margin-top: 2em;
+  padding-top: 1em;
+  border-top: 1px solid var(--border-color);
+}
+
+.md-def-name {
+  color: var(--heading-color);
+  font-weight: 600;
+}
+
+.md-def-content {
+  color: var(--text-color);
+}
+
+/* =========================================================================
+   Table of Contents
+   ========================================================================= */
+
+.md-toc {
+  font-size: 0.95em;
+  border: 1px solid var(--border-color);
+  border-radius: 8px;
+  padding: 1em 1.5em;
+  margin: 1em 0;
+  background-color: var(--bg-secondary);
+}
+
+.md-toc-content {
+  margin: 0;
+}
+
+.md-toc-h1 {
+  font-weight: 600;
+}
+
+.md-toc a,
+a.md-toc-inner {
+  color: var(--text-color);
+  text-decoration: none;
+}
+
+.md-toc a:hover,
+a.md-toc-inner:hover {
+  color: var(--aurora-green);
+}
+
+.md-toc-h1 .md-toc-inner,
+.md-toc-h2 .md-toc-inner {
+  color: var(--heading-color);
+}
+
+/* =========================================================================
+   YAML Front Matter
+   ========================================================================= */
+
+pre.md-meta-block {
+  font-family: var(--monospace);
+  font-size: 0.85em;
+  background-color: var(--code-bg);
+  border: 1px solid var(--code-border);
+  border-radius: 8px;
+  padding: 14px;
+  color: var(--text-muted);
+  margin-bottom: 2em;
+}
+
+/* =========================================================================
+   Metadata & Raw Blocks
+   ========================================================================= */
+
+.md-rawblock,
+.md-htmlblock-container {
+  border-radius: 8px;
+  background-color: var(--code-bg);
+  border: 1px solid var(--code-border);
+}
+
+.md-rawblock-tooltip,
+.md-comment {
+  color: var(--md-char-color);
+}
+
+.md-content.md-url,
+.md-meta-block {
+  color: var(--text-muted);
+}
+
+/* =========================================================================
+   Definition Lists
+   ========================================================================= */
+
+dt {
+  font-weight: 600;
+  color: var(--heading-color);
+  margin-top: 1em;
+}
+
+dd {
+  margin-left: 1.5em;
+  margin-bottom: 0.5em;
+}
+
+/* =========================================================================
+   Math / KaTeX
+   ========================================================================= */
+
+.MathJax_Display {
+  margin: 1em 0;
+  color: var(--text-color);
+}
+
+.md-math-block,
+.mathjax-block {
+  background-color: var(--code-bg);
+  border-radius: 8px;
+  padding: 0.5em;
+  margin: 1em 0;
+}
+
+/* =========================================================================
+   Mermaid & Diagrams
+   ========================================================================= */
+
+.md-diagram-panel {
+  background-color: var(--code-bg);
+  border: 1px solid var(--code-border);
+  border-radius: 8px;
+  padding: 14px;
+  margin: 1em 0;
+}
+
+.md-diagram-panel svg {
+  max-width: 100%;
+}
+
+/* =========================================================================
+   Abbreviations
+   ========================================================================= */
+
+abbr {
+  text-decoration: underline dotted var(--md-char-color);
+  cursor: help;
+  color: var(--text-color);
+}
+
+/* =========================================================================
+   Keyboard Input
+   ========================================================================= */
+
+kbd {
+  font-family: var(--monospace);
+  font-size: 0.85em;
+  background-color: var(--bg-secondary);
+  border: 1px solid var(--border-color);
+  border-bottom-width: 2px;
+  border-radius: 4px;
+  padding: 2px 6px;
+  color: var(--heading-color);
+}
+
+/* =========================================================================
+   Subscript / Superscript
+   ========================================================================= */
+
+sub, sup {
+  font-size: 0.8em;
+}
+
+/* =========================================================================
+   Emoji
+   ========================================================================= */
+
+.md-emoji-input {
+  border: 1px solid var(--border-color);
+  border-radius: 4px;
+  background-color: var(--bg-secondary);
+}
+
+/* =========================================================================
+   Sidebar — Deep polar night
+   ========================================================================= */
+
+#typora-sidebar {
+  background-color: var(--side-bar-bg-color);
+  border-right: 1px solid var(--border-color);
+}
+
+#typora-sidebar .file-list-item,
+#typora-sidebar .file-tree-node {
+  color: var(--text-color);
+  padding: 6px 16px;
+  border-bottom: 1px solid rgba(30, 42, 58, 0.4);
+  border-radius: 4px;
+  margin: 2px 8px;
+  transition: background-color 0.15s ease;
+}
+
+#typora-sidebar .file-list-item:hover,
+#typora-sidebar .file-tree-node:hover {
+  background-color: var(--item-hover-bg-color);
+  color: var(--item-hover-text-color);
+}
+
+#typora-sidebar .file-list-item.active,
+#typora-sidebar .file-tree-node.active {
+  background-color: var(--active-file-bg-color);
+  color: var(--active-file-text-color);
+  border-left: 3px solid var(--aurora-green);
+}
+
+#typora-sidebar .file-list-item .file-list-item-summary,
+.file-list-item-summary {
+  color: var(--md-char-color);
+  font-size: 0.85em;
+}
+
+#typora-sidebar #outline-content .outline-item {
+  color: var(--text-color);
+}
+
+#typora-sidebar #outline-content .outline-item:hover {
+  color: var(--aurora-green);
+}
+
+.sidebar-footer {
+  background-color: var(--side-bar-bg-color);
+  border-top: 1px solid var(--border-color);
+}
+
+/* Sidebar search */
+#file-library-search-input {
+  background-color: var(--code-bg);
+  border: 1px solid var(--code-border);
+  border-radius: 6px;
+  padding: 6px 10px;
+  color: var(--text-color);
+}
+
+#file-library-search-input:focus {
+  border-color: var(--aurora-green);
+  box-shadow: 0 0 0 3px rgba(100, 216, 168, 0.12);
+}
+
+/* Sidebar outline */
+.outline-item {
+  padding: 4px 0;
+}
+
+.outline-item:hover {
+  color: var(--aurora-green);
+}
+
+/* =========================================================================
+   Header / Title Bar
+   ========================================================================= */
+
+header,
+.context-menu,
+.megamenu-content,
+footer {
+  font-family: var(--body-font);
+  color: var(--text-color);
+}
+
+.megamenu-opened header {
+  background-color: var(--bg-color);
+}
+
+/* =========================================================================
+   Megamenu / Preferences
+   ========================================================================= */
+
+.megamenu-menu {
+  background-color: var(--bg-color);
+  box-shadow: 0 4px 20px rgba(0, 0, 0, 0.5);
+}
+
+.megamenu-content {
+  background-color: var(--bg-color);
+}
+
+.megamenu-menu-header {
+  border-bottom: var(--window-border);
+}
+
+.megamenu-menu-list li a {
+  color: var(--text-color);
+}
+
+.megamenu-menu-list li a:hover {
+  color: var(--aurora-green);
+  background-color: var(--item-hover-bg-color);
+}
+
+.megamenu-menu-list li a.active {
+  color: var(--aurora-green);
+}
+
+/* =========================================================================
+   Context Menu
+   ========================================================================= */
+
+.context-menu {
+  background-color: var(--bg-secondary);
+  border: 1px solid var(--border-color);
+  border-radius: 6px;
+  box-shadow: 0 4px 16px rgba(0, 0, 0, 0.5);
+}
+
+.context-menu.dropdown-menu .divider {
+  background-color: var(--border-color);
+}
+
+.context-menu li a {
+  color: var(--text-color);
+}
+
+.context-menu li a:hover {
+  background-color: var(--item-hover-bg-color);
+  color: var(--heading-color);
+}
+
+/* =========================================================================
+   Tooltips
+   ========================================================================= */
+
+.ty-tooltip {
+  background-color: var(--bg-secondary);
+  border: 1px solid var(--border-color);
+  color: var(--text-color);
+  border-radius: 6px;
+  padding: 4px 8px;
+  font-size: 0.85em;
+}
+
+/* =========================================================================
+   Dialog / Modal
+   ========================================================================= */
+
+.modal-content {
+  background-color: var(--bg-color);
+  border: var(--window-border);
+  border-radius: 8px;
+}
+
+.modal-header {
+  border-bottom: var(--window-border);
+}
+
+.modal-footer {
+  border-top: var(--window-border);
+}
+
+/* =========================================================================
+   Buttons
+   ========================================================================= */
+
+.btn,
+.btn-default {
+  background-color: var(--bg-secondary);
+  border: 1px solid var(--border-color);
+  color: var(--text-color);
+  border-radius: 6px;
+  padding: 6px 16px;
+  font-family: var(--body-font);
+  transition: background-color 0.15s ease, border-color 0.15s ease;
+}
+
+.btn:hover,
+.btn-default:hover {
+  background-color: var(--bg-elevated);
+  border-color: var(--text-muted);
+  color: var(--heading-color);
+}
+
+.btn-primary {
+  background-color: var(--aurora-green);
+  border-color: var(--primary-btn-border-color);
+  color: var(--primary-btn-text-color);
+  border-radius: 6px;
+  padding: 6px 16px;
+  font-family: var(--body-font);
+  font-weight: 600;
+  transition: background-color 0.15s ease;
+}
+
+.btn-primary:hover {
+  background-color: #7ee4bc;
+  border-color: #5ec8a0;
+}
+
+/* =========================================================================
+   Notification
+   ========================================================================= */
+
+.md-notification-container {
+  background-color: var(--bg-secondary);
+  border: 1px solid var(--border-color);
+  border-radius: 6px;
+  box-shadow: 0 4px 12px rgba(0, 0, 0, 0.4);
+  color: var(--text-color);
+}
+
+/* =========================================================================
+   Search Panel
+   ========================================================================= */
+
+#md-searchpanel {
+  background-color: var(--bg-color);
+  border-bottom: var(--window-border);
+  padding: 8px 16px;
+}
+
+#md-searchpanel input {
+  background-color: var(--code-bg);
+  border: 1px solid var(--code-border);
+  border-radius: 4px;
+  padding: 4px 8px;
+  color: var(--text-color);
+  font-family: var(--body-font);
+}
+
+#md-searchpanel input:focus {
+  border-color: var(--aurora-green);
+  box-shadow: 0 0 0 3px rgba(100, 216, 168, 0.12);
+}
+
+#md-searchpanel .btn {
+  border-radius: 4px;
+  background-color: var(--bg-secondary);
+  border: 1px solid var(--code-border);
+}
+
+.searchpanel-search-option-btn.active {
+  background-color: var(--aurora-green);
+  color: var(--primary-btn-text-color);
+}
+
+/* =========================================================================
+   Auto-complete
+   ========================================================================= */
+
+.auto-suggest-container {
+  background-color: var(--bg-secondary) !important;
+  border: 1px solid var(--border-color);
+  border-radius: 6px;
+  box-shadow: 0 4px 12px rgba(0, 0, 0, 0.4);
+}
+
+.auto-suggest-container li {
+  padding: 4px 12px;
+  color: var(--text-color);
+}
+
+.auto-suggest-container li:hover,
+.auto-suggest-container li.active {
+  background-color: var(--item-hover-bg-color);
+  color: var(--aurora-green);
+}
+
+/* =========================================================================
+   Quick Open
+   ========================================================================= */
+
+.ty-quick-open {
+  background-color: var(--bg-secondary);
+  border: 1px solid var(--border-color);
+  border-radius: 8px;
+  box-shadow: 0 8px 32px rgba(0, 0, 0, 0.6);
+}
+
+.ty-quick-open input {
+  border-bottom: 1px solid var(--border-color);
+  color: var(--text-color);
+  font-family: var(--body-font);
+  background-color: transparent;
+}
+
+.ty-quick-open-item:hover,
+.ty-quick-open-item.active {
+  background-color: var(--item-hover-bg-color);
+}
+
+/* =========================================================================
+   Focus Mode
+   ========================================================================= */
+
+.on-focus-mode .md-end-block:not(.md-focus):not(.md-focus-container) * {
+  color: var(--md-char-color) !important;
+}
+
+.on-focus-mode .md-end-block:not(.md-focus) img,
+.on-focus-mode .md-task-list-item:not(.md-focus-container) > input {
+  opacity: 0.35;
+}
+
+.on-focus-mode blockquote {
+  border-image: none;
+  border-left-color: rgba(100, 216, 168, 0.3);
+}
+
+.on-focus-mode .md-fences {
+  border-color: rgba(30, 42, 58, 0.5);
+}
+
+/* =========================================================================
+   Typewriter Mode
+   ========================================================================= */
+
+#typora-source .CodeMirror-lines {
+  max-width: 850px;
+  margin: 0 auto;
+}
+
+/* =========================================================================
+   Source Code Mode
+   ========================================================================= */
+
+.cm-s-typora-default .cm-header {
+  color: var(--heading-color);
+}
+
+.cm-s-typora-default .cm-link {
+  color: var(--aurora-green);
+}
+
+.cm-s-typora-default .cm-em {
+  color: var(--text-color);
+  font-style: italic;
+}
+
+.cm-s-typora-default .cm-strong {
+  color: var(--heading-color);
+  font-weight: 600;
+}
+
+#typora-source {
+  font-family: var(--monospace);
+  color: var(--text-color);
+}
+
+/* =========================================================================
+   Typora UI Elements
+   ========================================================================= */
+
+#write .md-focus .md-diagram-panel,
+#write .md-focus pre.md-fences {
+  border-color: var(--aurora-cyan);
+}
+
+.md-image > .md-meta {
+  color: var(--text-muted);
+  font-family: var(--monospace);
+  font-size: 0.85em;
+}
+
+.md-expand.md-image > .md-meta {
+  background-color: var(--code-bg);
+  border-radius: 4px;
+  padding: 4px 8px;
+}
+
+.ty-cursor {
+  background-color: var(--aurora-green);
+}
+
+.typora-node .typora-export-content {
+  padding-top: 0;
+}
+
+/* =========================================================================
+   Info Panel
+   ========================================================================= */
+
+.info-panel-tab-border {
+  background-color: var(--aurora-green);
+}
+
+/* =========================================================================
+   Footer Bar
+   ========================================================================= */
+
+footer.ty-footer {
+  border-top: var(--window-border);
+  background-color: var(--bg-color);
+  color: var(--text-muted);
+  font-size: 0.85em;
+}
+
+.ty-footer .footer-item:hover {
+  color: var(--text-color);
+}
+
+/* =========================================================================
+   Unibody Style (macOS)
+   ========================================================================= */
+
+.unibody-window header {
+  background-color: var(--side-bar-bg-color);
+}
+
+/* =========================================================================
+   Preferences Window
+   ========================================================================= */
+
+.ty-preferences .window-header {
+  background-color: var(--side-bar-bg-color);
+  border-bottom: var(--window-border);
+}
+
+.ty-preferences .nav-group-item.active {
+  background-color: var(--active-file-bg-color);
+  color: var(--aurora-green);
+}
+
+/* =========================================================================
+   Scrollbar — Aurora gradient thumb
+   ========================================================================= */
+
+::-webkit-scrollbar {
+  width: 8px;
+  height: 8px;
+}
+
+::-webkit-scrollbar-track {
+  background: transparent;
+}
+
+::-webkit-scrollbar-thumb {
+  background: linear-gradient(180deg, #64d8a8, #48b8d0, #8b6cc4);
+  border-radius: 4px;
+  border: 2px solid var(--bg-color);
+  background-clip: content-box;
+}
+
+::-webkit-scrollbar-thumb:hover {
+  background: linear-gradient(180deg, #7ee4bc, #5cc8e0, #a080d4);
+  border: 2px solid var(--bg-color);
+  background-clip: content-box;
+}
+
+/* =========================================================================
+   Export Styles
+   ========================================================================= */
+
+.typora-export {
+  background-color: var(--bg-color);
+}
+
+.typora-export #write {
+  padding-bottom: 2em;
+}
+
+.typora-export h1, .typora-export h2,
+.typora-export h3, .typora-export h4,
+.typora-export h5, .typora-export h6 {
+  color: var(--heading-color);
+}
+
+.typora-export li,
+.typora-export p {
+  line-height: 1.75;
+}
+
+/* =========================================================================
+   Print Styles — Graceful fallback to light
+   ========================================================================= */
+
+@media print {
+  html, body {
+    background: #fff !important;
+    color: #1a1a2e !important;
+    font-size: 13px;
+  }
+
+  #write {
+    max-width: 100%;
+    padding: 0;
+  }
+
+  h1, h2, h3, h4, h5, h6 {
+    color: #1a1a2e !important;
+    page-break-after: avoid;
+  }
+
+  h1 {
+    border-bottom: none !important;
+  }
+
+  h1::after {
+    background: linear-gradient(90deg, #3aaa80, #3898a8, #6a4c9c) !important;
+    height: 2px !important;
+  }
+
+  h2::before {
+    background: #3aaa80 !important;
+  }
+
+  h3, h4 {
+    color: #333 !important;
+  }
+
+  strong {
+    color: #1a1a2e !important;
+  }
+
+  a {
+    color: #3aaa80 !important;
+    text-decoration: underline;
+    text-shadow: none !important;
+  }
+
+  code, tt {
+    background-color: #f0f4f8 !important;
+    color: #3aaa80 !important;
+    border: 1px solid #d8dee9 !important;
+  }
+
+  .md-fences,
+  pre.md-fences {
+    background-color: #f0f4f8 !important;
+    border-color: #d8dee9 !important;
+    color: #1a1a2e !important;
+    page-break-inside: avoid;
+  }
+
+  blockquote {
+    border-left: 3px solid #3aaa80 !important;
+    border-image: none !important;
+    background-color: transparent !important;
+    color: #555 !important;
+  }
+
+  table th {
+    background-color: #f0f4f8 !important;
+    border-color: #d8dee9 !important;
+    color: #1a1a2e !important;
+  }
+
+  table td {
+    border-color: #d8dee9 !important;
+  }
+
+  table tr:nth-child(2n) {
+    background-color: #f8fafb !important;
+  }
+
+  thead tr {
+    border-image: none !important;
+    border-bottom: 2px solid #3aaa80 !important;
+  }
+
+  mark {
+    background-color: rgba(72, 184, 208, 0.2) !important;
+    color: #1a1a2e !important;
+  }
+
+  hr {
+    background: linear-gradient(90deg, #3aaa80, #3898a8, #6a4c9c) !important;
+    opacity: 0.6 !important;
+  }
+
+  .md-task-list-item > input:checked:before,
+  .md-task-list-item > input[checked]:before {
+    background: #3aaa80 !important;
+    border-color: #3aaa80 !important;
+  }
+
+  pre, code, blockquote, table, img {
+    page-break-inside: avoid;
+  }
+
+  img {
+    max-width: 100% !important;
+    page-break-inside: avoid;
+  }
+
+  sup.md-footnote {
+    background-color: transparent;
+    border: 1px solid #d8dee9;
+  }
+
+  ::-webkit-scrollbar {
+    display: none;
+  }
+
+  #typora-sidebar,
+  .typora-export-show-outline {
+    display: none !important;
+  }
+}

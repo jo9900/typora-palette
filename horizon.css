@@ -1,0 +1,1245 @@
+/*
+ * Horizon — A warm light Typora theme with coral/terracotta accents.
+ * Inspired by sunrise over a desert landscape.
+ * Typography: Space Grotesk (headings), Inter (body), JetBrains Mono (code)
+ */
+
+/* =========================================================================
+   Font Faces
+   ========================================================================= */
+
+@font-face {
+  font-family: 'Space Grotesk';
+  src: url('./fonts/space-grotesk/SpaceGrotesk-Latin.woff2') format('woff2');
+  font-weight: 100 900;
+  font-style: normal;
+  font-display: swap;
+}
+
+@font-face {
+  font-family: 'Inter';
+  src: url('./fonts/inter/Inter-Latin.woff2') format('woff2');
+  font-weight: 100 900;
+  font-style: normal;
+  font-display: swap;
+}
+
+@font-face {
+  font-family: 'JetBrains Mono';
+  src: url('./fonts/jetbrains-mono/JetBrainsMono-Latin.woff2') format('woff2');
+  font-weight: 100 800;
+  font-style: normal;
+  font-display: swap;
+}
+
+/* =========================================================================
+   CSS Variables
+   ========================================================================= */
+
+:root {
+  --bg-color: #fefcfa;
+  --bg-secondary: #f7f3ef;
+  --text-color: #3b3228;
+  --md-char-color: #b8a99a;
+  --meta-content-color: #8a7b6b;
+  --primary-color: #d05a3a;
+  --primary-btn-border-color: #c04e30;
+  --primary-btn-text-color: #fff;
+  --window-border: 1px solid #e8dfd6;
+  --active-file-bg-color: #fef6f3;
+  --active-file-text-color: #2d241c;
+  --active-file-border-color: #e06444;
+  --side-bar-bg-color: #f5f0eb;
+  --item-hover-bg-color: #f0e9e1;
+  --item-hover-text-color: #2d241c;
+  --monospace: 'JetBrains Mono', 'SF Mono', Menlo, monospace;
+
+  --heading-color: #2d241c;
+  --link-color: #d05a3a;
+  --link-hover-color: #b84a2e;
+  --accent-color: #e06444;
+  --code-bg: #f5f0eb;
+  --code-border: #e8dfd6;
+  --blockquote-border: #e06444;
+  --blockquote-bg: #fef6f3;
+  --table-header-bg: #2d241c;
+  --table-header-text: #f7f3ef;
+  --table-alt-row: #faf6f2;
+  --selection-color: rgba(224, 100, 68, 0.15);
+  --border-color: #e8dfd6;
+  --hr-color: #e8dfd6;
+  --mark-bg: #fef3c7;
+}
+
+/* =========================================================================
+   Base
+   ========================================================================= */
+
+html {
+  font-size: 16px;
+  -webkit-font-smoothing: antialiased;
+  -moz-osx-font-smoothing: grayscale;
+}
+
+body {
+  font-family: 'Inter', -apple-system, BlinkMacSystemFont, 'Segoe UI',
+    Helvetica, Arial, sans-serif;
+  color: var(--text-color);
+  background-color: var(--bg-color);
+  line-height: 1.75;
+  -webkit-font-smoothing: antialiased;
+}
+
+/* =========================================================================
+   Content Area
+   ========================================================================= */
+
+#write {
+  max-width: 850px;
+  margin: 0 auto;
+  padding: 30px 30px 100px;
+  font-size: 1rem;
+}
+
+#write > ul:first-child,
+#write > ol:first-child {
+  margin-top: 30px;
+}
+
+/* =========================================================================
+   Selection
+   ========================================================================= */
+
+::selection {
+  background: var(--selection-color);
+}
+
+::-moz-selection {
+  background: var(--selection-color);
+}
+
+/* =========================================================================
+   Headings
+   ========================================================================= */
+
+h1, h2, h3, h4, h5, h6 {
+  font-family: 'Space Grotesk', -apple-system, BlinkMacSystemFont, 'Segoe UI',
+    Helvetica, Arial, sans-serif;
+  color: var(--heading-color);
+  margin-top: 1.6em;
+  margin-bottom: 0.6em;
+  line-height: 1.3;
+}
+
+h1 {
+  font-size: 2.2em;
+  font-weight: 700;
+  letter-spacing: -0.02em;
+  color: var(--heading-color);
+  border-left: 4px solid var(--accent-color);
+  padding-left: 16px;
+  margin-bottom: 24px;
+  margin-top: 1.2em;
+}
+
+h2 {
+  font-size: 1.55em;
+  font-weight: 600;
+  color: var(--heading-color);
+  padding-bottom: 0.3em;
+  border-bottom: 1px solid var(--border-color);
+}
+
+h3 {
+  font-size: 1.2em;
+  font-weight: 600;
+  color: var(--text-color);
+}
+
+h4 {
+  font-size: 1.1em;
+  font-weight: 600;
+  color: var(--text-color);
+}
+
+h5 {
+  font-size: 1.02em;
+  font-weight: 600;
+  color: var(--meta-content-color);
+}
+
+h6 {
+  font-size: 1em;
+  font-weight: 600;
+  color: var(--meta-content-color);
+}
+
+/* Remove top margin when heading is the first child */
+#write > h1:first-child,
+#write > h2:first-child,
+#write > h3:first-child,
+#write > h4:first-child,
+#write > h5:first-child,
+#write > h6:first-child {
+  margin-top: 0;
+}
+
+#write > h1:first-child + h2,
+#write > h2:first-child + h3,
+#write > h3:first-child + h4 {
+  margin-top: 0.8em;
+}
+
+/* =========================================================================
+   Paragraph & Body Text
+   ========================================================================= */
+
+p,
+#write p {
+  font-family: 'Inter', -apple-system, BlinkMacSystemFont, 'Segoe UI',
+    Helvetica, Arial, sans-serif;
+  line-height: 1.75;
+  margin-top: 0;
+  margin-bottom: 1em;
+}
+
+/* =========================================================================
+   Links
+   ========================================================================= */
+
+a {
+  color: var(--link-color);
+  text-decoration: underline;
+  text-underline-offset: 3px;
+  text-decoration-thickness: 1.5px;
+  text-decoration-color: rgba(208, 90, 58, 0.4);
+  transition: color 0.15s ease, text-decoration-color 0.15s ease;
+}
+
+a:hover {
+  color: var(--link-hover-color);
+  text-decoration-color: var(--link-hover-color);
+}
+
+#write a {
+  text-decoration: underline;
+  text-underline-offset: 3px;
+  text-decoration-thickness: 1.5px;
+  text-decoration-color: rgba(208, 90, 58, 0.4);
+}
+
+#write a:hover {
+  text-decoration-color: var(--link-hover-color);
+}
+
+/* =========================================================================
+   Strong & Emphasis
+   ========================================================================= */
+
+strong,
+#write strong {
+  color: var(--heading-color);
+  font-weight: 600;
+}
+
+em {
+  font-style: italic;
+}
+
+/* =========================================================================
+   Mark / Highlight
+   ========================================================================= */
+
+mark {
+  background-color: var(--mark-bg);
+  border-radius: 3px;
+  padding: 1px 5px;
+  color: var(--text-color);
+}
+
+/* =========================================================================
+   Horizontal Rule
+   ========================================================================= */
+
+hr {
+  border: none;
+  height: 1px;
+  background: linear-gradient(
+    to right,
+    transparent,
+    var(--hr-color) 20%,
+    var(--hr-color) 80%,
+    transparent
+  );
+  margin: 2em 0;
+}
+
+/* =========================================================================
+   Blockquote
+   ========================================================================= */
+
+blockquote {
+  border-left: 3px solid var(--blockquote-border);
+  margin: 1em 0;
+  padding: 0.5em 1em 0.5em 1.2em;
+  color: #5c4f41;
+  background-color: var(--blockquote-bg);
+  border-radius: 0 6px 6px 0;
+}
+
+blockquote p {
+  margin-bottom: 0.5em;
+}
+
+blockquote p:last-child {
+  margin-bottom: 0;
+}
+
+blockquote blockquote {
+  border-left-color: rgba(224, 100, 68, 0.5);
+  margin-left: 0;
+}
+
+/* =========================================================================
+   Lists
+   ========================================================================= */
+
+ul, ol {
+  padding-left: 1.5em;
+  margin-top: 0;
+  margin-bottom: 1em;
+}
+
+li {
+  margin-bottom: 0.25em;
+  line-height: 1.75;
+}
+
+li > p {
+  margin-bottom: 0.5em;
+}
+
+ul ul, ol ol, ul ol, ol ul {
+  margin-top: 0.25em;
+  margin-bottom: 0.25em;
+}
+
+/* =========================================================================
+   Task Lists
+   ========================================================================= */
+
+.task-list {
+  padding-left: 0;
+}
+
+.md-task-list-item {
+  list-style-type: none;
+  padding-left: 1.25rem;
+}
+
+.md-task-list-item > input {
+  -webkit-appearance: none;
+  margin-left: -1.3em;
+  margin-top: 0.3rem;
+  top: auto;
+}
+
+.md-task-list-item > input:before {
+  content: "";
+  display: inline-block;
+  width: 0.875rem;
+  height: 0.875rem;
+  vertical-align: middle;
+  text-align: center;
+  border: 1px solid var(--border-color);
+  background-color: #fff;
+  border-radius: 3px;
+  margin-top: -0.4rem;
+}
+
+.md-task-list-item > input:checked:before,
+.md-task-list-item > input[checked]:before {
+  content: '\221A';
+  font-size: 0.625rem;
+  line-height: 0.625rem;
+  color: #ffffff;
+  background-color: #e06444;
+  border-color: #e06444;
+  border-radius: 3px;
+}
+
+.md-task-list-item.task-list-done > p {
+  text-decoration: line-through;
+  color: var(--meta-content-color);
+}
+
+/* =========================================================================
+   Code -- Inline
+   ========================================================================= */
+
+code,
+.md-fences {
+  font-family: var(--monospace);
+}
+
+#write code,
+tt {
+  font-family: var(--monospace);
+  font-size: 0.9em;
+  background-color: var(--code-bg);
+  border-radius: 4px;
+  padding: 2px 6px;
+  color: var(--link-color);
+  border: 1px solid var(--code-border);
+}
+
+/* =========================================================================
+   Code -- Fenced Blocks
+   ========================================================================= */
+
+pre.md-fences,
+.md-fences {
+  font-family: var(--monospace);
+  font-size: 0.9em;
+  background-color: var(--code-bg);
+  border: 1px solid var(--code-border);
+  border-radius: 8px;
+  padding: 1em;
+  margin: 1em 0;
+  overflow-x: auto;
+  line-height: 1.55;
+}
+
+pre.md-fences code,
+.md-fences code {
+  background: none;
+  border: none;
+  padding: 0;
+  font-size: inherit;
+  color: inherit;
+}
+
+.md-fences .code-tooltip {
+  bottom: -1.6em;
+}
+
+/* Code block line numbers */
+.CodeMirror-linenumber {
+  color: var(--md-char-color);
+}
+
+/* =========================================================================
+   CodeMirror Syntax Highlighting (warm earth tones)
+   ========================================================================= */
+
+.cm-s-inner {
+  color: var(--text-color);
+  background-color: var(--code-bg);
+}
+
+.cm-s-inner .cm-header {
+  color: var(--heading-color);
+  font-weight: 600;
+}
+
+.cm-s-inner .cm-link {
+  color: var(--link-color);
+  text-decoration: none;
+}
+
+.cm-s-inner .cm-url {
+  color: var(--meta-content-color);
+}
+
+/* Strings: warm olive green */
+.cm-s-inner .cm-string {
+  color: #6a7d3a;
+}
+
+/* Comments: muted warm gray */
+.cm-s-inner .cm-comment {
+  color: #a89a8a;
+}
+
+/* Tags: coral */
+.cm-s-inner .cm-tag {
+  color: #d05a3a;
+}
+
+/* Attributes: burnt orange */
+.cm-s-inner .cm-attribute {
+  color: #c67b35;
+}
+
+/* Keywords: warm plum */
+.cm-s-inner .cm-keyword {
+  color: #9b5f8a;
+}
+
+/* Variables: body text */
+.cm-s-inner .cm-variable {
+  color: var(--text-color);
+}
+
+/* Variable-2: terracotta */
+.cm-s-inner .cm-variable-2 {
+  color: #c05a3a;
+}
+
+/* Numbers: warm amber */
+.cm-s-inner .cm-number {
+  color: #b07d38;
+}
+
+/* Atoms: plum */
+.cm-s-inner .cm-atom {
+  color: #9b5f8a;
+}
+
+/* Definitions: deep brown */
+.cm-s-inner .cm-def {
+  color: #5a4735;
+}
+
+/* Properties: earthy mid-tone */
+.cm-s-inner .cm-property {
+  color: #7a6248;
+}
+
+/* Qualifiers: terracotta */
+.cm-s-inner .cm-qualifier {
+  color: #c05a3a;
+}
+
+/* Builtins: burnt orange */
+.cm-s-inner .cm-builtin {
+  color: #c67b35;
+}
+
+/* Brackets: warm gray */
+.cm-s-inner .cm-bracket {
+  color: #8a7b6b;
+}
+
+/* Meta: muted */
+.cm-s-inner .cm-meta {
+  color: var(--meta-content-color);
+}
+
+/* Operators: warm brown */
+.cm-s-inner .cm-operator {
+  color: #6e5a46;
+}
+
+.CodeMirror-cursor {
+  border-left: 2px solid var(--accent-color);
+}
+
+.CodeMirror-selectedtext,
+.CodeMirror-selected {
+  background: var(--selection-color) !important;
+}
+
+.CodeMirror-gutters {
+  background-color: var(--code-bg);
+  border-right: 1px solid var(--code-border);
+}
+
+/* =========================================================================
+   Tables
+   ========================================================================= */
+
+table {
+  border-collapse: collapse;
+  width: 100%;
+  margin: 1em 0;
+  font-size: 0.95em;
+}
+
+thead {
+  background-color: var(--table-header-bg);
+}
+
+th {
+  font-family: 'Space Grotesk', -apple-system, BlinkMacSystemFont, sans-serif;
+  font-weight: 600;
+  color: var(--table-header-text);
+  padding: 10px 14px;
+  border: 1px solid var(--table-header-bg);
+  text-align: left;
+}
+
+td {
+  padding: 8px 14px;
+  border: 1px solid var(--border-color);
+}
+
+tr:nth-child(even) {
+  background-color: var(--table-alt-row);
+}
+
+tr:hover {
+  background-color: #f3ece4;
+  transition: background-color 0.15s ease;
+}
+
+/* =========================================================================
+   Images
+   ========================================================================= */
+
+#write img {
+  max-width: 100%;
+  border-radius: 6px;
+  margin: 0.5em 0;
+}
+
+img + br + .md-image-link,
+p > .md-image:only-child {
+  display: block;
+  text-align: center;
+}
+
+/* =========================================================================
+   Footnotes
+   ========================================================================= */
+
+sup.md-footnote {
+  color: var(--link-color);
+  background-color: var(--blockquote-bg);
+  padding: 1px 5px;
+  border-radius: 3px;
+  font-size: 0.85em;
+  cursor: pointer;
+  transition: background-color 0.15s ease;
+}
+
+sup.md-footnote:hover {
+  background-color: rgba(224, 100, 68, 0.2);
+}
+
+.md-footnote-bottom {
+  font-size: 0.9em;
+  color: var(--meta-content-color);
+}
+
+.md-def-name {
+  color: var(--heading-color);
+  font-weight: 600;
+}
+
+.md-def-content {
+  color: var(--text-color);
+}
+
+/* =========================================================================
+   Table of Contents
+   ========================================================================= */
+
+.md-toc {
+  font-size: 0.95em;
+  border: 1px solid var(--border-color);
+  border-radius: 8px;
+  padding: 1em 1.5em;
+  margin: 1em 0;
+  background-color: var(--bg-secondary);
+}
+
+.md-toc-content {
+  margin: 0;
+}
+
+.md-toc-h1 {
+  font-weight: 600;
+}
+
+.md-toc a {
+  color: var(--text-color);
+  text-decoration: none;
+}
+
+.md-toc a:hover {
+  color: var(--link-color);
+}
+
+/* =========================================================================
+   YAML Front Matter
+   ========================================================================= */
+
+pre.md-meta-block {
+  font-family: var(--monospace);
+  font-size: 0.85em;
+  background-color: var(--code-bg);
+  border: 1px solid var(--code-border);
+  border-radius: 8px;
+  padding: 1em;
+  color: var(--meta-content-color);
+  margin-bottom: 2em;
+}
+
+/* =========================================================================
+   Metadata & Raw Blocks
+   ========================================================================= */
+
+.md-rawblock,
+.md-htmlblock-container {
+  border-radius: 8px;
+  background-color: var(--code-bg);
+  border: 1px solid var(--code-border);
+}
+
+.md-rawblock-tooltip {
+  background-color: var(--code-bg);
+  color: var(--text-color);
+}
+
+/* =========================================================================
+   Definition Lists
+   ========================================================================= */
+
+dd {
+  margin-left: 1.5em;
+  margin-bottom: 0.5em;
+}
+
+dt {
+  font-weight: 600;
+  color: var(--heading-color);
+}
+
+/* =========================================================================
+   Math / KaTeX
+   ========================================================================= */
+
+.MathJax_Display {
+  margin: 1em 0;
+}
+
+.md-math-block {
+  background-color: var(--code-bg);
+  border-radius: 8px;
+  padding: 0.5em;
+  margin: 1em 0;
+}
+
+/* =========================================================================
+   Sidebar
+   ========================================================================= */
+
+#typora-sidebar {
+  background-color: var(--side-bar-bg-color);
+  border-right: var(--window-border);
+}
+
+#typora-sidebar .file-list-item,
+#typora-sidebar .file-tree-node {
+  padding: 6px 16px;
+  border-radius: 6px;
+  margin: 2px 8px;
+  transition: background-color 0.15s ease;
+}
+
+#typora-sidebar .file-list-item:hover,
+#typora-sidebar .file-tree-node:hover {
+  background-color: var(--item-hover-bg-color);
+  color: var(--item-hover-text-color);
+}
+
+#typora-sidebar .file-list-item.active,
+#typora-sidebar .file-tree-node.active {
+  background-color: var(--active-file-bg-color);
+  color: var(--active-file-text-color);
+  border-left: 3px solid var(--active-file-border-color);
+}
+
+.file-list-item-summary {
+  color: var(--meta-content-color);
+  font-size: 0.85em;
+}
+
+/* Sidebar search */
+#file-library-search-input {
+  background-color: #fff;
+  border: 1px solid var(--border-color);
+  border-radius: 6px;
+  padding: 6px 10px;
+  transition: border-color 0.15s ease, box-shadow 0.15s ease;
+}
+
+#file-library-search-input:focus {
+  border-color: var(--accent-color);
+  box-shadow: 0 0 0 3px var(--selection-color);
+}
+
+/* Sidebar outline */
+.outline-item {
+  padding: 4px 0;
+  transition: color 0.15s ease;
+}
+
+.outline-item:hover {
+  color: var(--link-color);
+}
+
+/* =========================================================================
+   Header / Title Bar
+   ========================================================================= */
+
+header,
+.context-menu,
+.megamenu-content,
+footer {
+  font-family: 'Inter', -apple-system, BlinkMacSystemFont, 'Segoe UI',
+    Helvetica, Arial, sans-serif;
+}
+
+.megamenu-opened header {
+  background-color: var(--bg-color);
+}
+
+/* =========================================================================
+   Megamenu / Preferences
+   ========================================================================= */
+
+.megamenu-menu {
+  background-color: var(--bg-color);
+  box-shadow: 0 4px 20px rgba(59, 50, 40, 0.08);
+}
+
+.megamenu-menu-header {
+  border-bottom: var(--window-border);
+}
+
+.megamenu-menu-list li a {
+  color: var(--text-color);
+  transition: color 0.15s ease, background-color 0.15s ease;
+}
+
+.megamenu-menu-list li a:hover {
+  color: var(--link-color);
+  background-color: var(--active-file-bg-color);
+}
+
+.megamenu-menu-list li a.active {
+  color: var(--link-color);
+}
+
+/* =========================================================================
+   Context Menu
+   ========================================================================= */
+
+.context-menu {
+  background-color: var(--bg-color);
+  border: 1px solid var(--border-color);
+  border-radius: 8px;
+  box-shadow: 0 4px 16px rgba(59, 50, 40, 0.1);
+}
+
+.context-menu.dropdown-menu .divider {
+  background-color: var(--border-color);
+}
+
+/* =========================================================================
+   Tooltips
+   ========================================================================= */
+
+.ty-tooltip {
+  background-color: var(--heading-color);
+  color: #fefcfa;
+  border-radius: 6px;
+  padding: 4px 10px;
+  font-size: 0.85em;
+}
+
+/* =========================================================================
+   Dialog / Modal
+   ========================================================================= */
+
+.modal-content {
+  background-color: var(--bg-color);
+  border: var(--window-border);
+  border-radius: 10px;
+}
+
+.modal-header {
+  border-bottom: var(--window-border);
+}
+
+.modal-footer {
+  border-top: var(--window-border);
+}
+
+.btn-primary {
+  background-color: var(--accent-color);
+  border-color: var(--primary-btn-border-color);
+  color: var(--primary-btn-text-color);
+  border-radius: 6px;
+  padding: 6px 16px;
+  font-family: 'Inter', sans-serif;
+  transition: background-color 0.15s ease;
+}
+
+.btn-primary:hover {
+  background-color: var(--link-hover-color);
+  border-color: #a5422a;
+}
+
+.btn-default {
+  background-color: #fff;
+  border: 1px solid var(--border-color);
+  color: var(--text-color);
+  border-radius: 6px;
+  padding: 6px 16px;
+  transition: background-color 0.15s ease;
+}
+
+.btn-default:hover {
+  background-color: var(--item-hover-bg-color);
+}
+
+/* =========================================================================
+   Notification
+   ========================================================================= */
+
+.md-notification-container {
+  background-color: var(--bg-color);
+  border: 1px solid var(--border-color);
+  border-radius: 8px;
+  box-shadow: 0 4px 16px rgba(59, 50, 40, 0.1);
+  color: var(--text-color);
+}
+
+/* =========================================================================
+   Search Panel
+   ========================================================================= */
+
+#md-searchpanel {
+  background-color: var(--bg-color);
+  border-bottom: var(--window-border);
+  padding: 8px 16px;
+}
+
+#md-searchpanel input {
+  background-color: #fff;
+  border: 1px solid var(--border-color);
+  border-radius: 6px;
+  padding: 4px 8px;
+  font-family: 'Inter', sans-serif;
+  transition: border-color 0.15s ease, box-shadow 0.15s ease;
+}
+
+#md-searchpanel input:focus {
+  border-color: var(--accent-color);
+  box-shadow: 0 0 0 3px var(--selection-color);
+}
+
+#md-searchpanel .btn {
+  border-radius: 6px;
+}
+
+.searchpanel-search-option-btn.active {
+  background-color: var(--active-file-bg-color);
+  color: var(--link-color);
+}
+
+/* =========================================================================
+   Focus Mode
+   ========================================================================= */
+
+.on-focus-mode blockquote {
+  border-left-color: rgba(224, 100, 68, 0.4);
+}
+
+.on-focus-mode .md-fences {
+  border-color: rgba(232, 223, 214, 0.5);
+}
+
+/* =========================================================================
+   Source Mode
+   ========================================================================= */
+
+.cm-s-typora-default .cm-header {
+  color: var(--heading-color);
+  font-family: 'Space Grotesk', sans-serif;
+  font-weight: 600;
+}
+
+/* =========================================================================
+   Scrollbar
+   ========================================================================= */
+
+::-webkit-scrollbar {
+  width: 8px;
+  height: 8px;
+}
+
+::-webkit-scrollbar-track {
+  background: transparent;
+}
+
+::-webkit-scrollbar-thumb {
+  background-color: #d4c9bc;
+  border-radius: 4px;
+  border: 2px solid transparent;
+  background-clip: content-box;
+}
+
+::-webkit-scrollbar-thumb:hover {
+  background-color: #b8a99a;
+}
+
+/* =========================================================================
+   Mermaid & Diagrams
+   ========================================================================= */
+
+.md-diagram-panel {
+  margin: 1em 0;
+}
+
+.md-diagram-panel svg {
+  max-width: 100%;
+}
+
+/* =========================================================================
+   Abbreviations
+   ========================================================================= */
+
+abbr {
+  text-decoration: underline dotted;
+  cursor: help;
+  color: var(--text-color);
+}
+
+/* =========================================================================
+   Keyboard Tag
+   ========================================================================= */
+
+kbd {
+  font-family: var(--monospace);
+  font-size: 0.85em;
+  background-color: var(--bg-color);
+  border: 1px solid var(--border-color);
+  border-bottom-width: 2px;
+  border-radius: 5px;
+  padding: 2px 7px;
+  color: var(--heading-color);
+}
+
+/* =========================================================================
+   Auto-complete
+   ========================================================================= */
+
+.auto-suggest-container {
+  background-color: var(--bg-color);
+  border: 1px solid var(--border-color);
+  border-radius: 8px;
+  box-shadow: 0 4px 16px rgba(59, 50, 40, 0.1);
+}
+
+.auto-suggest-container li {
+  padding: 4px 12px;
+  transition: background-color 0.15s ease;
+}
+
+.auto-suggest-container li:hover,
+.auto-suggest-container li.active {
+  background-color: var(--active-file-bg-color);
+  color: var(--link-color);
+}
+
+/* =========================================================================
+   Typora UI Elements
+   ========================================================================= */
+
+#write .md-focus .md-diagram-panel,
+#write .md-focus pre.md-fences {
+  border-color: var(--accent-color);
+}
+
+.md-image > .md-meta {
+  color: var(--meta-content-color);
+  font-family: var(--monospace);
+  font-size: 0.85em;
+}
+
+.md-expand.md-image > .md-meta {
+  background-color: var(--code-bg);
+  border-radius: 6px;
+  padding: 4px 8px;
+}
+
+/* Typed cursor blink */
+.ty-cursor {
+  background-color: var(--accent-color);
+}
+
+/* Mac traffic lights area */
+.typora-node .typora-export-content {
+  padding-top: 0;
+}
+
+/* =========================================================================
+   Emoji
+   ========================================================================= */
+
+.md-emoji-input {
+  border: 1px solid var(--border-color);
+  border-radius: 6px;
+}
+
+/* =========================================================================
+   Footer Bar
+   ========================================================================= */
+
+footer.ty-footer {
+  border-top: var(--window-border);
+  background-color: var(--bg-color);
+  color: var(--meta-content-color);
+  font-size: 0.85em;
+}
+
+.ty-footer .footer-item:hover {
+  color: var(--text-color);
+}
+
+/* =========================================================================
+   Unibody Style (macOS)
+   ========================================================================= */
+
+.unibody-window header {
+  background-color: var(--side-bar-bg-color);
+}
+
+/* =========================================================================
+   Preferences Window
+   ========================================================================= */
+
+.ty-preferences .window-header {
+  background-color: var(--side-bar-bg-color);
+  border-bottom: var(--window-border);
+}
+
+.ty-preferences .nav-group-item.active {
+  background-color: var(--active-file-bg-color);
+  color: var(--link-color);
+}
+
+/* =========================================================================
+   Word Count & Info Panel
+   ========================================================================= */
+
+.info-panel-tab-border {
+  background-color: var(--accent-color);
+}
+
+/* =========================================================================
+   Quick Open
+   ========================================================================= */
+
+.ty-quick-open {
+  background-color: var(--bg-color);
+  border: 1px solid var(--border-color);
+  border-radius: 10px;
+  box-shadow: 0 8px 32px rgba(59, 50, 40, 0.12);
+}
+
+.ty-quick-open input {
+  border-bottom: 1px solid var(--border-color);
+  font-family: 'Inter', sans-serif;
+}
+
+.ty-quick-open-item:hover,
+.ty-quick-open-item.active {
+  background-color: var(--active-file-bg-color);
+}
+
+/* =========================================================================
+   Export Styles
+   ========================================================================= */
+
+.typora-export h1, .typora-export h2,
+.typora-export h3, .typora-export h4,
+.typora-export h5, .typora-export h6 {
+  color: var(--heading-color);
+}
+
+.typora-export li,
+.typora-export p {
+  line-height: 1.75;
+}
+
+/* =========================================================================
+   Print Styles
+   ========================================================================= */
+
+@media print {
+  html {
+    font-size: 14px;
+  }
+
+  body {
+    color: #2d241c;
+    background: #fff;
+  }
+
+  #write {
+    max-width: 100%;
+    padding: 0;
+  }
+
+  h1, h2, h3, h4, h5, h6 {
+    color: #2d241c;
+    page-break-after: avoid;
+  }
+
+  h1 {
+    border-left-color: #d05a3a;
+  }
+
+  h2 {
+    border-bottom-color: #e8dfd6;
+  }
+
+  pre.md-fences,
+  .md-fences {
+    border: 1px solid #e8dfd6;
+    background-color: #f7f3ef;
+    page-break-inside: avoid;
+  }
+
+  blockquote {
+    border-left-color: #d05a3a;
+    background-color: transparent;
+  }
+
+  table {
+    page-break-inside: avoid;
+  }
+
+  thead {
+    background-color: #2d241c;
+  }
+
+  th {
+    color: #f7f3ef;
+  }
+
+  a {
+    color: #d05a3a;
+    text-decoration: underline;
+  }
+
+  img {
+    max-width: 100% !important;
+    page-break-inside: avoid;
+  }
+
+  mark {
+    border: 1px solid #e8dfd6;
+    background-color: var(--mark-bg);
+  }
+
+  sup.md-footnote {
+    background-color: transparent;
+    border: 1px solid #e8dfd6;
+  }
+}

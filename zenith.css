@@ -1,0 +1,1171 @@
+/*
+ * Zenith — Premium dark Typora theme with layered surfaces and amber accents
+ * Inspired by Linear, Raycast, and glass-morphism dark UIs.
+ * Deep charcoal surfaces with warm-to-cool gradient feel, amber/gold highlights.
+ */
+
+/* ===== Font Faces ===== */
+
+@font-face {
+  font-family: 'Space Grotesk';
+  src: url('./fonts/space-grotesk/SpaceGrotesk-Latin.woff2') format('woff2');
+  font-weight: 100 900;
+  font-style: normal;
+  font-display: swap;
+}
+
+@font-face {
+  font-family: 'Inter';
+  src: url('./fonts/inter/Inter-Latin.woff2') format('woff2');
+  font-weight: 100 900;
+  font-style: normal;
+  font-display: swap;
+}
+
+@font-face {
+  font-family: 'JetBrains Mono';
+  src: url('./fonts/jetbrains-mono/JetBrainsMono-Latin.woff2') format('woff2');
+  font-weight: 100 800;
+  font-style: normal;
+  font-display: swap;
+}
+
+/* ===== CSS Variables ===== */
+
+:root {
+  --bg-color: #111113;
+  --surface-1: #1a1a1f;
+  --surface-2: #222228;
+  --surface-3: #2a2a32;
+  --text-color: #ebebef;
+  --text-secondary: #8e8e96;
+  --heading-color: #f5f5f7;
+  --md-char-color: #3a3a42;
+  --meta-content-color: #8e8e96;
+
+  --accent: #f59e0b;
+  --accent-hover: #d97706;
+  --accent-glow: rgba(245, 158, 11, 0.3);
+  --accent-subtle: rgba(245, 158, 11, 0.04);
+  --accent-selection: rgba(245, 158, 11, 0.15);
+  --accent-highlight: rgba(245, 158, 11, 0.2);
+
+  --primary-color: #f59e0b;
+  --primary-btn-border-color: #f59e0b;
+  --primary-btn-text-color: #111113;
+
+  --window-border: 1px solid var(--surface-3);
+  --active-file-bg-color: var(--surface-1);
+  --active-file-text-color: var(--heading-color);
+  --active-file-border-color: var(--accent);
+  --side-bar-bg-color: #0d0d0f;
+  --item-hover-bg-color: var(--surface-2);
+  --item-hover-text-color: var(--heading-color);
+
+  --body-font: 'Inter', -apple-system, BlinkMacSystemFont, 'Segoe UI', sans-serif;
+  --heading-font: 'Space Grotesk', -apple-system, BlinkMacSystemFont, sans-serif;
+  --monospace: 'JetBrains Mono', 'SF Mono', Menlo, Consolas, monospace;
+
+  --link-color: var(--accent);
+  --code-bg: var(--surface-1);
+  --code-border: var(--surface-3);
+  --blockquote-border: var(--accent);
+  --table-header-bg: var(--surface-1);
+  --table-alt-row: #151517;
+  --selection-color: var(--accent-selection);
+  --border-subtle: var(--surface-3);
+}
+
+/* ===== Base ===== */
+
+html {
+  font-size: 15px;
+  -webkit-font-smoothing: antialiased;
+  -moz-osx-font-smoothing: grayscale;
+}
+
+body {
+  font-family: var(--body-font);
+  color: var(--text-color);
+  background-color: var(--bg-color);
+  line-height: 1.75;
+  -webkit-text-size-adjust: 100%;
+}
+
+/* ===== Writing Area ===== */
+
+#write {
+  max-width: 840px;
+  margin: 0 auto;
+  padding: 30px 30px 100px;
+}
+
+#write > ul:first-child,
+#write > ol:first-child {
+  margin-top: 30px;
+}
+
+/* ===== Selection ===== */
+
+::selection {
+  background: var(--selection-color);
+}
+
+/* ===== Headings ===== */
+
+h1, h2, h3, h4, h5, h6 {
+  font-family: var(--heading-font);
+  line-height: 1.3;
+  transition: color 0.2s ease;
+}
+
+/* H1 — Signature gradient text */
+h1 {
+  font-size: 2.2em;
+  font-weight: 700;
+  letter-spacing: -0.03em;
+  margin-top: 52px;
+  margin-bottom: 20px;
+  padding-bottom: 14px;
+  border-bottom: 1px solid var(--surface-3);
+  background: linear-gradient(180deg, #f5f5f7 0%, #a0a0a8 100%);
+  -webkit-background-clip: text;
+  -webkit-text-fill-color: transparent;
+  background-clip: text;
+}
+
+/* H2 — Subtle gradient text */
+h2 {
+  font-size: 1.55em;
+  font-weight: 600;
+  letter-spacing: -0.02em;
+  margin-top: 40px;
+  margin-bottom: 16px;
+  background: linear-gradient(180deg, #f5f5f7 0%, #b8b8c0 100%);
+  -webkit-background-clip: text;
+  -webkit-text-fill-color: transparent;
+  background-clip: text;
+}
+
+h3 {
+  font-size: 1.2em;
+  font-weight: 600;
+  color: var(--text-color);
+  margin-top: 32px;
+  margin-bottom: 12px;
+}
+
+h4 {
+  font-size: 0.9em;
+  font-weight: 500;
+  color: var(--text-secondary);
+  text-transform: uppercase;
+  letter-spacing: 0.06em;
+  margin-top: 28px;
+  margin-bottom: 10px;
+}
+
+h5 {
+  font-size: 0.85em;
+  font-weight: 500;
+  color: var(--text-secondary);
+  text-transform: uppercase;
+  letter-spacing: 0.05em;
+  margin-top: 24px;
+  margin-bottom: 8px;
+}
+
+h6 {
+  font-size: 0.8em;
+  font-weight: 500;
+  color: var(--md-char-color);
+  text-transform: uppercase;
+  letter-spacing: 0.05em;
+  margin-top: 20px;
+  margin-bottom: 6px;
+}
+
+/* ===== Paragraphs ===== */
+
+p {
+  font-family: var(--body-font);
+  font-weight: 400;
+  margin: 0.7em 0;
+  line-height: 1.75;
+}
+
+/* ===== Strong / Em / Mark ===== */
+
+strong {
+  color: var(--heading-color);
+  font-weight: 600;
+}
+
+em {
+  color: inherit;
+}
+
+mark {
+  background-color: var(--accent-highlight);
+  color: var(--text-color);
+  padding: 1px 5px;
+  border-radius: 3px;
+}
+
+/* ===== Links ===== */
+
+a {
+  color: var(--accent);
+  text-decoration: none;
+  transition: color 0.2s ease, text-shadow 0.2s ease, text-decoration 0.2s ease;
+}
+
+a:hover {
+  text-decoration: underline;
+  text-shadow: 0 0 12px var(--accent-glow);
+}
+
+#write a {
+  color: var(--accent);
+  text-decoration: none;
+}
+
+#write a:hover {
+  text-decoration: underline;
+  text-shadow: 0 0 12px var(--accent-glow);
+}
+
+/* ===== Blockquotes ===== */
+
+blockquote {
+  margin: 1.2em 0;
+  padding: 0.5em 0 0.5em 1.2em;
+  border-left: 2px solid var(--accent);
+  background: var(--accent-subtle);
+  color: var(--text-color);
+  border-radius: 0 6px 6px 0;
+}
+
+blockquote blockquote {
+  padding-right: 0;
+}
+
+blockquote p {
+  color: var(--text-secondary);
+}
+
+/* ===== Lists ===== */
+
+ul, ol {
+  padding-left: 1.8em;
+  margin: 0.5em 0;
+}
+
+li {
+  margin: 0.3em 0;
+}
+
+li > p {
+  margin: 0.25em 0;
+}
+
+/* ===== Task Lists ===== */
+
+.task-list {
+  padding-left: 0;
+}
+
+.md-task-list-item {
+  list-style-type: none;
+  padding-left: 1.25rem;
+}
+
+.md-task-list-item > input {
+  -webkit-appearance: none;
+  margin-left: -1.3em;
+  margin-top: 0.3rem;
+  top: auto;
+}
+
+.md-task-list-item > input:before {
+  content: "";
+  display: inline-block;
+  width: 0.875rem;
+  height: 0.875rem;
+  vertical-align: middle;
+  text-align: center;
+  border: 1px solid #3a3a42;
+  background: var(--surface-1);
+  border-radius: 4px;
+  margin-top: -0.4rem;
+  transition: background-color 0.2s ease, border-color 0.2s ease;
+}
+
+.md-task-list-item > input:checked:before,
+.md-task-list-item > input[checked]:before {
+  content: '\221A';
+  font-size: 0.625rem;
+  line-height: 0.625rem;
+  color: #111113;
+  background: var(--accent);
+  border-color: var(--accent);
+}
+
+.md-task-list-item.task-list-done > p {
+  text-decoration: line-through;
+  color: var(--md-char-color);
+}
+
+/* ===== Tables ===== */
+
+table {
+  width: 100%;
+  border-collapse: collapse;
+  margin: 1.4em 0;
+  font-size: 0.95em;
+  border: none;
+}
+
+table th {
+  background-color: var(--surface-1);
+  color: var(--accent);
+  font-family: var(--heading-font);
+  font-weight: 600;
+  font-size: 0.8em;
+  text-transform: uppercase;
+  letter-spacing: 0.04em;
+  padding: 11px 14px;
+  text-align: left;
+  border: none;
+  border-bottom: 2px solid var(--surface-3);
+}
+
+table td {
+  padding: 9px 14px;
+  border: none;
+  border-bottom: 1px solid var(--surface-3);
+  transition: background-color 0.2s ease;
+}
+
+table tr:nth-child(2n) {
+  background-color: var(--table-alt-row);
+}
+
+table tr:hover {
+  background-color: var(--surface-2);
+}
+
+thead {
+  background-color: var(--surface-1);
+}
+
+/* ===== Code -- Inline ===== */
+
+code,
+tt {
+  font-family: var(--monospace);
+  font-size: 0.88em;
+  background-color: var(--surface-2);
+  color: var(--accent);
+  border: none;
+  border-radius: 4px;
+  padding: 2px 6px;
+}
+
+/* ===== Code -- Fenced Blocks ===== */
+
+pre {
+  margin: 1.4em 0;
+}
+
+.md-fences,
+pre.md-fences {
+  font-family: var(--monospace);
+  font-size: 0.88em;
+  background-color: var(--surface-1);
+  border: 1px solid var(--surface-3);
+  border-radius: 8px;
+  padding: 18px;
+  overflow-x: auto;
+  line-height: 1.6;
+  color: var(--text-color);
+  box-shadow: 0 0 0 1px rgba(245, 158, 11, 0.05), 0 2px 8px rgba(0, 0, 0, 0.3);
+}
+
+.md-fences .code-tooltip {
+  background-color: var(--surface-2);
+  border: 1px solid var(--surface-3);
+  border-radius: 4px;
+  color: var(--text-secondary);
+  font-family: var(--body-font);
+  font-size: 0.85em;
+}
+
+/* CodeMirror overrides */
+.CodeMirror pre {
+  font-family: var(--monospace);
+}
+
+.cm-s-inner {
+  background-color: var(--surface-1) !important;
+  color: var(--text-color) !important;
+}
+
+.cm-s-inner .cm-variable {
+  color: var(--text-color);
+}
+
+.cm-s-inner .cm-variable-2 {
+  color: #93c5fd;
+}
+
+.cm-s-inner .cm-variable-3 {
+  color: #a5b4fc;
+}
+
+.cm-s-inner .cm-keyword {
+  color: #7dd3fc;
+}
+
+.cm-s-inner .cm-string {
+  color: #f59e0b;
+}
+
+.cm-s-inner .cm-string-2 {
+  color: #d97706;
+}
+
+.cm-s-inner .cm-comment {
+  color: #52525a;
+}
+
+.cm-s-inner .cm-def {
+  color: #86efac;
+}
+
+.cm-s-inner .cm-number {
+  color: #c4b5fd;
+}
+
+.cm-s-inner .cm-atom {
+  color: #c4b5fd;
+}
+
+.cm-s-inner .cm-builtin {
+  color: #93c5fd;
+}
+
+.cm-s-inner .cm-property {
+  color: #93c5fd;
+}
+
+.cm-s-inner .cm-operator {
+  color: var(--text-color);
+}
+
+.cm-s-inner .cm-tag {
+  color: #f59e0b;
+}
+
+.cm-s-inner .cm-attribute {
+  color: #86efac;
+}
+
+.cm-s-inner .cm-meta {
+  color: #52525a;
+}
+
+.cm-s-inner .cm-type {
+  color: #7dd3fc;
+}
+
+.cm-s-inner .cm-qualifier {
+  color: #fbbf24;
+}
+
+.cm-s-inner .cm-header {
+  color: var(--heading-color);
+}
+
+.cm-s-inner .cm-link {
+  color: var(--accent);
+}
+
+.cm-s-inner .CodeMirror-gutters {
+  background-color: var(--surface-1);
+  border-right: 1px solid var(--surface-3);
+}
+
+.cm-s-inner .CodeMirror-linenumber {
+  color: #3a3a42;
+}
+
+.cm-s-inner .CodeMirror-cursor {
+  border-left: 1px solid var(--accent);
+}
+
+.cm-s-inner .CodeMirror-selected,
+.cm-s-inner .CodeMirror-selectedtext {
+  background: var(--selection-color) !important;
+}
+
+/* Active line highlight */
+.cm-s-inner .CodeMirror-activeline-background {
+  background-color: rgba(245, 158, 11, 0.03) !important;
+}
+
+.CodeMirror-activeline-background {
+  background-color: rgba(245, 158, 11, 0.03) !important;
+}
+
+/* ===== Horizontal Rule ===== */
+
+hr {
+  border: none;
+  height: 1px;
+  margin: 2.5em 0;
+  background: var(--surface-3);
+  position: relative;
+  overflow: visible;
+}
+
+hr::after {
+  content: "\2022";
+  color: var(--accent);
+  font-size: 14px;
+  position: absolute;
+  top: 50%;
+  left: 50%;
+  transform: translate(-50%, -50%);
+  background: var(--bg-color);
+  padding: 0 12px;
+  line-height: 1;
+}
+
+/* ===== Images ===== */
+
+img {
+  max-width: 100%;
+  border-radius: 6px;
+}
+
+#write img {
+  margin: 0.5em 0;
+}
+
+/* ===== Footnotes ===== */
+
+.md-footnote {
+  font-size: 0.85em;
+  color: var(--accent);
+}
+
+sup.md-footnote {
+  background-color: transparent;
+  color: var(--accent);
+}
+
+.footnotes-area {
+  font-size: 0.9em;
+  color: var(--text-secondary);
+  margin-top: 2em;
+  padding-top: 1em;
+  border-top: 1px solid var(--surface-3);
+}
+
+/* ===== Table of Contents ===== */
+
+.md-toc {
+  font-size: 0.95em;
+}
+
+.md-toc-inner {
+  margin-left: 0;
+  color: var(--text-secondary);
+}
+
+.md-toc-h1 .md-toc-inner,
+.md-toc-h2 .md-toc-inner {
+  color: var(--heading-color);
+}
+
+a.md-toc-inner {
+  color: var(--text-secondary);
+}
+
+a.md-toc-inner:hover {
+  color: var(--accent);
+}
+
+/* ===== YAML Front Matter ===== */
+
+pre.md-meta-block {
+  font-family: var(--monospace);
+  font-size: 0.85em;
+  background-color: var(--surface-1);
+  border: 1px solid var(--surface-3);
+  border-radius: 8px;
+  padding: 16px;
+  color: var(--text-secondary);
+}
+
+/* ===== Definition Lists ===== */
+
+dl dt {
+  font-weight: 600;
+  color: var(--heading-color);
+  margin-top: 1em;
+}
+
+dl dd {
+  margin-left: 1.5em;
+  margin-bottom: 0.5em;
+}
+
+/* ===== Abbreviations ===== */
+
+abbr {
+  text-decoration: underline dotted var(--text-secondary);
+  cursor: help;
+}
+
+/* ===== Keyboard Input ===== */
+
+kbd {
+  font-family: var(--monospace);
+  font-size: 0.82em;
+  background-color: var(--surface-2);
+  border: 1px solid var(--surface-3);
+  border-bottom-width: 2px;
+  border-radius: 4px;
+  padding: 2px 7px;
+  color: var(--heading-color);
+}
+
+/* ===== Subscript / Superscript ===== */
+
+sub, sup {
+  font-size: 0.8em;
+}
+
+/* ===== Markdown Source Mode Characters ===== */
+
+.md-rawblock-tooltip,
+.md-comment {
+  color: var(--md-char-color);
+}
+
+.md-content.md-url,
+.md-meta-block {
+  color: var(--text-secondary);
+}
+
+/* ===== Sidebar ===== */
+
+#typora-sidebar {
+  background-color: var(--side-bar-bg-color);
+  border-right: 1px solid #1a1a1f;
+}
+
+#typora-sidebar .file-list-item,
+#typora-sidebar .file-tree-node {
+  color: var(--text-color);
+  border-bottom: 1px solid #151517;
+  transition: background-color 0.2s ease, color 0.2s ease;
+}
+
+#typora-sidebar .file-list-item:hover,
+#typora-sidebar .file-tree-node:hover {
+  background-color: #151517;
+  color: var(--heading-color);
+}
+
+#typora-sidebar .file-list-item.active,
+#typora-sidebar .file-tree-node.active {
+  background-color: var(--surface-1);
+  color: var(--heading-color);
+  border-left: 2px solid var(--accent);
+}
+
+#typora-sidebar .file-list-item .file-list-item-summary {
+  color: var(--md-char-color);
+}
+
+#typora-sidebar #outline-content .outline-item {
+  color: var(--text-secondary);
+  transition: color 0.2s ease;
+}
+
+#typora-sidebar #outline-content .outline-item:hover {
+  color: var(--accent);
+}
+
+.sidebar-footer {
+  background-color: var(--side-bar-bg-color);
+  border-top: 1px solid #1a1a1f;
+}
+
+/* Sidebar search */
+#file-library-search-input {
+  background-color: var(--surface-1);
+  border: 1px solid var(--surface-3);
+  color: var(--text-color);
+  border-radius: 6px;
+  transition: border-color 0.2s ease, box-shadow 0.2s ease;
+}
+
+#file-library-search-input:focus {
+  border-color: var(--accent);
+  box-shadow: 0 0 0 2px rgba(245, 158, 11, 0.1);
+}
+
+/* Sidebar tabs */
+.info-panel-tab-border {
+  border-bottom-color: var(--accent) !important;
+}
+
+/* ===== Megamenu (Preferences / About) ===== */
+
+.megamenu-menu {
+  background-color: var(--bg-color);
+}
+
+.megamenu-content {
+  background-color: var(--bg-color);
+}
+
+/* ===== Header Bar ===== */
+
+header,
+.context-menu,
+.megamenu-content,
+footer {
+  font-family: var(--body-font);
+  color: var(--text-color);
+}
+
+/* ===== Buttons ===== */
+
+.btn,
+.btn-default {
+  background-color: var(--surface-1);
+  border: 1px solid var(--surface-3);
+  color: var(--text-color);
+  border-radius: 6px;
+  font-family: var(--body-font);
+  transition: background-color 0.2s ease, border-color 0.2s ease, color 0.2s ease;
+}
+
+.btn:hover,
+.btn-default:hover {
+  background-color: var(--surface-2);
+  border-color: var(--text-secondary);
+  color: var(--heading-color);
+}
+
+.btn-primary {
+  background-color: var(--accent);
+  border-color: var(--accent);
+  color: var(--primary-btn-text-color);
+  font-weight: 600;
+}
+
+.btn-primary:hover {
+  background-color: var(--accent-hover);
+  border-color: var(--accent-hover);
+}
+
+/* ===== Tooltip ===== */
+
+.ty-tooltip {
+  background-color: var(--surface-3);
+  border: 1px solid var(--surface-3);
+  color: var(--text-color);
+  border-radius: 6px;
+  box-shadow: 0 4px 16px rgba(0, 0, 0, 0.4);
+}
+
+/* ===== Auto-complete ===== */
+
+.auto-suggest-container {
+  background-color: var(--surface-1) !important;
+  border: 1px solid var(--surface-3);
+  border-radius: 8px;
+  box-shadow: 0 8px 32px rgba(0, 0, 0, 0.5);
+}
+
+.auto-suggest-container li {
+  color: var(--text-color);
+  transition: background-color 0.15s ease;
+}
+
+.auto-suggest-container li.active,
+.auto-suggest-container li:hover {
+  background-color: var(--surface-2);
+  color: var(--heading-color);
+}
+
+/* ===== Search Panel ===== */
+
+#md-searchpanel {
+  background-color: var(--bg-color);
+  border-bottom: 1px solid var(--surface-3);
+}
+
+#md-searchpanel input {
+  background-color: var(--surface-1);
+  border: 1px solid var(--surface-3);
+  color: var(--text-color);
+  border-radius: 6px;
+  transition: border-color 0.2s ease, box-shadow 0.2s ease;
+}
+
+#md-searchpanel input:focus {
+  border-color: var(--accent);
+  box-shadow: 0 0 0 2px rgba(245, 158, 11, 0.1);
+}
+
+#md-searchpanel .btn {
+  background-color: var(--surface-1);
+  border: 1px solid var(--surface-3);
+}
+
+.searchpanel-search-option-btn.active {
+  background-color: var(--accent);
+  color: var(--primary-btn-text-color);
+}
+
+/* Search highlight */
+#write .md-search-hit {
+  background-color: rgba(245, 158, 11, 0.25);
+  border-radius: 2px;
+}
+
+#write .md-search-select {
+  background-color: rgba(245, 158, 11, 0.4);
+}
+
+/* ===== Focus Mode ===== */
+
+.on-focus-mode .md-end-block:not(.md-focus):not(.md-focus-container) * {
+  color: #3a3a42 !important;
+}
+
+.on-focus-mode .md-end-block:not(.md-focus) img,
+.on-focus-mode .md-task-list-item:not(.md-focus-container) > input {
+  opacity: 0.2;
+}
+
+.on-focus-mode .md-end-block:not(.md-focus) a {
+  color: #3a3a42 !important;
+  text-shadow: none !important;
+}
+
+/* ===== Typewriter Mode ===== */
+
+#typora-source .CodeMirror-lines {
+  max-width: 840px;
+  margin: 0 auto;
+}
+
+/* ===== Source Code Mode ===== */
+
+.cm-s-typora-default .cm-header {
+  color: var(--heading-color);
+}
+
+.cm-s-typora-default .cm-link {
+  color: var(--accent);
+}
+
+.cm-s-typora-default .cm-em {
+  color: var(--text-color);
+  font-style: italic;
+}
+
+.cm-s-typora-default .cm-strong {
+  color: var(--heading-color);
+  font-weight: 600;
+}
+
+#typora-source {
+  font-family: var(--monospace);
+  color: var(--text-color);
+}
+
+/* ===== Math (MathJax / KaTeX) ===== */
+
+.mathjax-block {
+  margin: 1em 0;
+}
+
+.MathJax_Display {
+  color: var(--text-color);
+}
+
+/* ===== Mermaid / Diagrams ===== */
+
+.md-diagram-panel {
+  background-color: var(--surface-1);
+  border: 1px solid var(--surface-3);
+  border-radius: 8px;
+  padding: 16px;
+}
+
+/* ===== Scrollbar ===== */
+
+::-webkit-scrollbar {
+  width: 6px;
+  height: 6px;
+}
+
+::-webkit-scrollbar-track {
+  background: transparent;
+}
+
+::-webkit-scrollbar-thumb {
+  background-color: var(--surface-3);
+  border-radius: 3px;
+  transition: background-color 0.2s ease;
+}
+
+::-webkit-scrollbar-thumb:hover {
+  background-color: #3a3a42;
+}
+
+/* ===== Context Menu ===== */
+
+.context-menu {
+  background-color: var(--surface-1);
+  border: 1px solid var(--surface-3);
+  box-shadow: 0 8px 32px rgba(0, 0, 0, 0.6);
+  border-radius: 8px;
+  backdrop-filter: blur(12px);
+}
+
+.context-menu.dropdown-menu .divider {
+  background-color: var(--surface-3);
+}
+
+.context-menu li a {
+  color: var(--text-color);
+  transition: background-color 0.15s ease, color 0.15s ease;
+}
+
+.context-menu li a:hover {
+  background-color: var(--surface-2);
+  color: var(--heading-color);
+}
+
+/* ===== Notification ===== */
+
+.md-notification-container {
+  background-color: var(--surface-1);
+  border: 1px solid var(--surface-3);
+  color: var(--text-color);
+  border-radius: 8px;
+  box-shadow: 0 4px 20px rgba(0, 0, 0, 0.4);
+}
+
+/* ===== Dropdowns / Panels ===== */
+
+.dropdown-menu {
+  background-color: var(--surface-1);
+  border: 1px solid var(--surface-3);
+  border-radius: 8px;
+  box-shadow: 0 8px 32px rgba(0, 0, 0, 0.5);
+  backdrop-filter: blur(12px);
+}
+
+.dropdown-menu li a {
+  color: var(--text-color);
+  transition: background-color 0.15s ease, color 0.15s ease;
+}
+
+.dropdown-menu li a:hover {
+  background-color: var(--surface-2);
+  color: var(--heading-color);
+}
+
+/* ===== Window Chrome / Title Bar (macOS) ===== */
+
+.megamenu-menu-header {
+  border-bottom: 1px solid var(--surface-3);
+}
+
+.megamenu-menu-header #top-titlebar {
+  background-color: var(--bg-color);
+}
+
+.megamenu-menu-list li a {
+  color: var(--text-color);
+  transition: background-color 0.2s ease, color 0.2s ease;
+}
+
+.megamenu-menu-list li a:hover,
+.megamenu-menu-list li a.active {
+  color: var(--heading-color);
+  background-color: var(--surface-1);
+}
+
+/* ===== Preferences Window ===== */
+
+.typora-quick-open-item {
+  background-color: transparent;
+  color: var(--text-color);
+  transition: background-color 0.15s ease;
+}
+
+.typora-quick-open-item.active {
+  background-color: var(--surface-1);
+  color: var(--heading-color);
+}
+
+#typora-quick-open {
+  background-color: var(--surface-1);
+  border: 1px solid var(--surface-3);
+  box-shadow: 0 12px 48px rgba(0, 0, 0, 0.6);
+  border-radius: 12px;
+  backdrop-filter: blur(16px);
+}
+
+#typora-quick-open input#typora-quick-open-input {
+  background-color: var(--bg-color);
+  border: 1px solid var(--surface-3);
+  color: var(--text-color);
+  border-radius: 8px;
+  transition: border-color 0.2s ease, box-shadow 0.2s ease;
+}
+
+#typora-quick-open input#typora-quick-open-input:focus {
+  border-color: var(--accent);
+  box-shadow: 0 0 0 2px rgba(245, 158, 11, 0.1);
+}
+
+/* ===== Mac Window Unibody ===== */
+
+.mac-seamless-mode #typora-sidebar {
+  background-color: var(--side-bar-bg-color);
+}
+
+/* ===== Drag-and-Drop ===== */
+
+.file-node-background {
+  background-color: rgba(245, 158, 11, 0.06);
+}
+
+.file-node-icon {
+  color: var(--text-secondary);
+}
+
+/* ===== Print Styles ===== */
+
+@media print {
+  html, body {
+    background: #fff !important;
+    color: #1a1a1f !important;
+    font-size: 12px;
+  }
+
+  h1, h2, h3, h4, h5, h6 {
+    color: #1a1a1f !important;
+    page-break-after: avoid;
+  }
+
+  h1 {
+    background: none !important;
+    -webkit-text-fill-color: #1a1a1f !important;
+    border-bottom-color: #e0e0e0 !important;
+  }
+
+  h2 {
+    background: none !important;
+    -webkit-text-fill-color: #1a1a1f !important;
+  }
+
+  strong {
+    color: #1a1a1f !important;
+  }
+
+  a {
+    color: #d97706 !important;
+    text-shadow: none !important;
+  }
+
+  code, tt {
+    background-color: #f5f5f5 !important;
+    color: #b45309 !important;
+    border: none !important;
+  }
+
+  .md-fences,
+  pre.md-fences {
+    background-color: #f5f5f5 !important;
+    border: 1px solid #e0e0e0 !important;
+    color: #1a1a1f !important;
+    box-shadow: none !important;
+  }
+
+  blockquote {
+    border-left-color: #f59e0b !important;
+    background: transparent !important;
+    color: #6b6b6b !important;
+  }
+
+  table th {
+    background-color: #f5f5f5 !important;
+    border-bottom-color: #e0e0e0 !important;
+    color: #b45309 !important;
+    text-transform: uppercase !important;
+  }
+
+  table td {
+    border-bottom-color: #e0e0e0 !important;
+  }
+
+  table tr:nth-child(2n) {
+    background-color: #fafafa !important;
+  }
+
+  mark {
+    background-color: #fef3c7 !important;
+    color: #1a1a1f !important;
+  }
+
+  hr {
+    background: #e0e0e0 !important;
+  }
+
+  hr::after {
+    color: #f59e0b !important;
+    background: #fff !important;
+  }
+
+  pre, code, blockquote, table, img {
+    page-break-inside: avoid;
+  }
+
+  #typora-sidebar,
+  .typora-export-show-outline {
+    display: none !important;
+  }
+
+  #write {
+    max-width: 100%;
+    padding: 0;
+  }
+}
+
+/* ===== Export Styles ===== */
+
+.typora-export {
+  background-color: var(--bg-color);
+}
+
+.typora-export #write {
+  padding-bottom: 2em;
+}
+
+.typora-export h1 {
+  border-bottom: 1px solid var(--surface-3);
+}

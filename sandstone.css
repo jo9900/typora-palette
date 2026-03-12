@@ -1,0 +1,1405 @@
+/*
+ * Sandstone — A warm, organic light theme for Typora.
+ * Inspired by desert landscapes, natural stone, and afternoon light.
+ * Typography: Space Grotesk (headings), Source Serif 4 (body), JetBrains Mono (code)
+ */
+
+/* =========================================================================
+   Font Faces
+   ========================================================================= */
+
+@font-face {
+  font-family: 'Space Grotesk';
+  src: url('./fonts/space-grotesk/SpaceGrotesk-Latin.woff2') format('woff2');
+  font-weight: 300 700;
+  font-style: normal;
+  font-display: swap;
+}
+
+@font-face {
+  font-family: 'Source Serif 4';
+  src: url('./fonts/source-serif/SourceSerif4-Latin.woff2') format('woff2');
+  font-weight: 300 900;
+  font-style: normal;
+  font-display: swap;
+}
+
+@font-face {
+  font-family: 'JetBrains Mono';
+  src: url('./fonts/jetbrains-mono/JetBrainsMono-Latin.woff2') format('woff2');
+  font-weight: 400 700;
+  font-style: normal;
+  font-display: swap;
+}
+
+/* =========================================================================
+   CSS Variables
+   ========================================================================= */
+
+:root {
+  --bg-color: #f9f5ef;
+  --bg-secondary: #f0e9df;
+  --text-color: #40352a;
+  --md-char-color: #b3a494;
+  --meta-content-color: #8a7968;
+  --primary-color: #b85c38;
+  --primary-btn-border-color: #a04f30;
+  --primary-btn-text-color: #fff;
+  --window-border: 1px solid #ddd2c3;
+  --active-file-bg-color: #f5efe5;
+  --active-file-text-color: #2e211a;
+  --active-file-border-color: #c46a3f;
+  --side-bar-bg-color: #f0e9df;
+  --item-hover-bg-color: #e8dece;
+  --item-hover-text-color: #2e211a;
+  --monospace: 'JetBrains Mono', 'SF Mono', Menlo, monospace;
+
+  --heading-color: #2e211a;
+  --link-color: #b85c38;
+  --accent-color: #c46a3f;
+  --code-bg: #f0e9df;
+  --code-border: #ddd2c3;
+  --blockquote-border: #c4a06a;
+  --blockquote-bg: #f5efe5;
+  --table-header-bg: #e8dece;
+  --table-alt-row: #f5f0e8;
+  --selection-color: rgba(196, 106, 63, 0.15);
+  --border-color: #ddd2c3;
+  --hr-color: #c4a06a;
+
+  --heading-font: 'Space Grotesk', -apple-system, BlinkMacSystemFont, 'Segoe UI',
+    Helvetica, Arial, sans-serif;
+  --body-font: 'Source Serif 4', 'Georgia', 'Palatino Linotype', 'Book Antiqua',
+    Palatino, serif;
+}
+
+/* =========================================================================
+   Base
+   ========================================================================= */
+
+html {
+  font-size: 16px;
+  -webkit-font-smoothing: antialiased;
+  -moz-osx-font-smoothing: grayscale;
+}
+
+body {
+  font-family: var(--body-font);
+  color: var(--text-color);
+  background-color: var(--bg-color);
+  line-height: 1.8;
+  -webkit-text-size-adjust: 100%;
+}
+
+/* =========================================================================
+   Content Area
+   ========================================================================= */
+
+#write {
+  max-width: 800px;
+  margin: 0 auto;
+  padding: 30px 30px 100px;
+  font-size: 1rem;
+}
+
+#write > ul:first-child,
+#write > ol:first-child {
+  margin-top: 30px;
+}
+
+/* =========================================================================
+   Selection
+   ========================================================================= */
+
+::selection {
+  background: var(--selection-color);
+}
+
+/* =========================================================================
+   Headings
+   ========================================================================= */
+
+h1, h2, h3, h4, h5, h6 {
+  font-family: var(--heading-font);
+  color: var(--heading-color);
+  margin-top: 1.6em;
+  margin-bottom: 0.6em;
+  line-height: 1.3;
+}
+
+h1 {
+  font-size: 1.9em;
+  font-weight: 700;
+  letter-spacing: -0.01em;
+  padding-bottom: 10px;
+  border-bottom: 2px solid var(--border-color);
+}
+
+h2 {
+  font-size: 1.5em;
+  font-weight: 600;
+  position: relative;
+  padding-bottom: 0;
+}
+
+h2::after {
+  content: '';
+  display: block;
+  width: 40px;
+  height: 2px;
+  background-color: var(--blockquote-border);
+  margin-top: 8px;
+}
+
+h3 {
+  font-size: 1.2em;
+  font-weight: 600;
+  color: var(--text-color);
+}
+
+h4 {
+  font-size: 1.1em;
+  font-weight: 600;
+  color: var(--text-color);
+}
+
+h5 {
+  font-size: 1em;
+  font-weight: 600;
+  color: var(--meta-content-color);
+}
+
+h6 {
+  font-size: 0.95em;
+  font-weight: 600;
+  color: var(--meta-content-color);
+}
+
+#write > h1:first-child,
+#write > h2:first-child,
+#write > h3:first-child,
+#write > h4:first-child,
+#write > h5:first-child,
+#write > h6:first-child {
+  margin-top: 0;
+}
+
+#write > h1:first-child + h2,
+#write > h2:first-child + h3,
+#write > h3:first-child + h4 {
+  margin-top: 0.8em;
+}
+
+/* =========================================================================
+   Paragraph & Body Text
+   ========================================================================= */
+
+p,
+#write p {
+  font-family: var(--body-font);
+  line-height: 1.8;
+  margin-top: 0;
+  margin-bottom: 1em;
+  font-size: 1rem;
+}
+
+/* =========================================================================
+   Strong & Emphasis
+   ========================================================================= */
+
+strong,
+#write strong {
+  color: var(--heading-color);
+  font-weight: 700;
+}
+
+em {
+  font-style: italic;
+  color: inherit;
+}
+
+/* =========================================================================
+   Links
+   ========================================================================= */
+
+a {
+  color: var(--link-color);
+  text-decoration: underline;
+  text-underline-offset: 3px;
+  text-decoration-color: rgba(184, 92, 56, 0.4);
+  transition: color 0.15s ease, text-decoration-color 0.15s ease;
+}
+
+a:hover {
+  color: #994d2f;
+  text-decoration-color: #994d2f;
+}
+
+#write a {
+  color: var(--link-color);
+  text-decoration: underline;
+  text-underline-offset: 3px;
+  text-decoration-color: rgba(184, 92, 56, 0.4);
+}
+
+#write a:hover {
+  color: #994d2f;
+  text-decoration-color: #994d2f;
+}
+
+/* =========================================================================
+   Mark / Highlight
+   ========================================================================= */
+
+mark {
+  background-color: #fef3c7;
+  border-radius: 2px;
+  padding: 1px 4px;
+  color: var(--text-color);
+}
+
+/* =========================================================================
+   Horizontal Rule
+   ========================================================================= */
+
+hr {
+  border: none;
+  height: auto;
+  margin: 2.5em 0;
+  text-align: center;
+  background: transparent;
+}
+
+hr::after {
+  content: '\2022\00a0\00a0\00a0\2022\00a0\00a0\00a0\2022';
+  display: block;
+  color: var(--hr-color);
+  font-size: 16px;
+  letter-spacing: 2px;
+}
+
+/* =========================================================================
+   Blockquote
+   ========================================================================= */
+
+blockquote {
+  border-left: 3px solid var(--blockquote-border);
+  margin: 1.2em 0;
+  padding: 0.6em 1em 0.6em 1.2em;
+  color: #5a4a3a;
+  font-family: var(--body-font);
+  font-style: italic;
+  background-color: var(--blockquote-bg);
+  border-radius: 0 6px 6px 0;
+}
+
+blockquote p {
+  margin-bottom: 0.5em;
+}
+
+blockquote p:last-child {
+  margin-bottom: 0;
+}
+
+blockquote blockquote {
+  border-left-color: var(--accent-color);
+  margin-left: 0;
+  background-color: rgba(240, 233, 223, 0.5);
+}
+
+/* =========================================================================
+   Lists
+   ========================================================================= */
+
+ul, ol {
+  padding-left: 1.5em;
+  margin-top: 0;
+  margin-bottom: 1em;
+}
+
+li {
+  margin-bottom: 0.25em;
+  line-height: 1.8;
+}
+
+li > p {
+  margin-bottom: 0.5em;
+}
+
+ul ul, ol ol, ul ol, ol ul {
+  margin-top: 0.25em;
+  margin-bottom: 0.25em;
+}
+
+/* =========================================================================
+   Task Lists
+   ========================================================================= */
+
+.task-list {
+  padding-left: 0;
+}
+
+.md-task-list-item {
+  list-style-type: none;
+  padding-left: 1.25rem;
+}
+
+.md-task-list-item > input {
+  -webkit-appearance: none;
+  margin-left: -1.3em;
+  margin-top: 0.3rem;
+  top: auto;
+}
+
+.md-task-list-item > input:before {
+  content: "";
+  display: inline-block;
+  width: 0.875rem;
+  height: 0.875rem;
+  vertical-align: middle;
+  text-align: center;
+  border: 1px solid var(--border-color);
+  background-color: #fff;
+  border-radius: 3px;
+  margin-top: -0.4rem;
+}
+
+.md-task-list-item > input:checked:before,
+.md-task-list-item > input[checked]:before {
+  content: '\221A';
+  font-size: 0.625rem;
+  line-height: 0.625rem;
+  color: #ffffff;
+  background-color: #c46a3f;
+  border-color: #c46a3f;
+  border-radius: 3px;
+}
+
+.md-task-list-item.task-list-done > p {
+  text-decoration: line-through;
+  color: var(--meta-content-color);
+}
+
+/* =========================================================================
+   Code -- Inline
+   ========================================================================= */
+
+code,
+.md-fences {
+  font-family: var(--monospace);
+}
+
+#write code,
+tt {
+  font-family: var(--monospace);
+  font-size: 0.88em;
+  background-color: #ede5d8;
+  border-radius: 4px;
+  padding: 2px 6px;
+  color: #b85c38;
+  border: none;
+}
+
+/* =========================================================================
+   Code -- Fenced Blocks
+   ========================================================================= */
+
+pre.md-fences,
+.md-fences {
+  font-family: var(--monospace);
+  font-size: 0.9em;
+  background-color: var(--code-bg);
+  border: 1px solid var(--code-border);
+  border-radius: 6px;
+  padding: 1em;
+  margin: 1.2em 0;
+  overflow-x: auto;
+  line-height: 1.55;
+  color: var(--text-color);
+}
+
+pre.md-fences code,
+.md-fences code {
+  background: none;
+  border: none;
+  padding: 0;
+  font-size: inherit;
+  color: inherit;
+}
+
+.md-fences .code-tooltip {
+  background-color: var(--bg-secondary);
+  border: 1px solid var(--code-border);
+  border-radius: 4px;
+  color: var(--meta-content-color);
+  bottom: -1.6em;
+}
+
+.CodeMirror-linenumber {
+  color: var(--md-char-color);
+}
+
+/* =========================================================================
+   CodeMirror Syntax Colors (warm earth-tone palette)
+   ========================================================================= */
+
+.cm-s-inner {
+  color: var(--text-color);
+  background-color: var(--code-bg) !important;
+}
+
+.cm-s-inner .cm-header {
+  color: var(--heading-color);
+  font-weight: 600;
+}
+
+.cm-s-inner .cm-link {
+  color: var(--link-color);
+  text-decoration: none;
+}
+
+.cm-s-inner .cm-url {
+  color: var(--meta-content-color);
+}
+
+/* Strings: warm olive green */
+.cm-s-inner .cm-string {
+  color: #7a6f4a;
+}
+
+/* Comments: muted sand */
+.cm-s-inner .cm-comment {
+  color: #b3a494;
+}
+
+/* Keywords: deep sienna */
+.cm-s-inner .cm-keyword {
+  color: #a0522d;
+}
+
+/* Variables: earth brown text */
+.cm-s-inner .cm-variable {
+  color: var(--text-color);
+}
+
+.cm-s-inner .cm-variable-2 {
+  color: #8b5e3c;
+}
+
+/* Definitions: burnt umber */
+.cm-s-inner .cm-def {
+  color: #6b4226;
+}
+
+/* Numbers: warm ochre */
+.cm-s-inner .cm-number {
+  color: #b8860b;
+}
+
+/* Atoms/booleans: terracotta */
+.cm-s-inner .cm-atom {
+  color: #c46a3f;
+}
+
+/* Types/builtins: warm rust */
+.cm-s-inner .cm-builtin {
+  color: #a0522d;
+}
+
+/* Properties: warm brown */
+.cm-s-inner .cm-property {
+  color: #6b4f3a;
+}
+
+/* Qualifiers: sienna */
+.cm-s-inner .cm-qualifier {
+  color: #b85c38;
+}
+
+/* Tags (HTML/XML): deep earth */
+.cm-s-inner .cm-tag {
+  color: #8b4513;
+}
+
+/* Attributes: ochre */
+.cm-s-inner .cm-attribute {
+  color: #b8860b;
+}
+
+/* Operators: warm dark */
+.cm-s-inner .cm-operator {
+  color: #5a4030;
+}
+
+/* Brackets: muted */
+.cm-s-inner .cm-bracket {
+  color: #8a7968;
+}
+
+/* Meta: subdued */
+.cm-s-inner .cm-meta {
+  color: var(--meta-content-color);
+}
+
+.CodeMirror-cursor {
+  border-left: 2px solid var(--heading-color);
+}
+
+.CodeMirror-selectedtext,
+.CodeMirror-selected {
+  background: var(--selection-color) !important;
+}
+
+.CodeMirror-gutters {
+  background-color: var(--code-bg);
+  border-right: 1px solid var(--code-border);
+}
+
+/* =========================================================================
+   Tables
+   ========================================================================= */
+
+table {
+  border-collapse: separate;
+  border-spacing: 0;
+  width: 100%;
+  margin: 1.2em 0;
+  font-size: 0.95em;
+  border: 1px solid var(--border-color);
+  border-radius: 8px;
+  overflow: hidden;
+}
+
+thead {
+  background-color: var(--table-header-bg);
+}
+
+th {
+  font-family: var(--heading-font);
+  font-weight: 600;
+  color: var(--heading-color);
+  padding: 10px 14px;
+  border-bottom: 1px solid var(--border-color);
+  border-right: 1px solid var(--border-color);
+  text-align: left;
+}
+
+th:last-child {
+  border-right: none;
+}
+
+td {
+  padding: 8px 14px;
+  border-bottom: 1px solid var(--border-color);
+  border-right: 1px solid var(--border-color);
+}
+
+td:last-child {
+  border-right: none;
+}
+
+tr:last-child td {
+  border-bottom: none;
+}
+
+tr:nth-child(even) {
+  background-color: var(--table-alt-row);
+}
+
+tr:hover {
+  background-color: #ede5d8;
+}
+
+/* =========================================================================
+   Images
+   ========================================================================= */
+
+#write img {
+  max-width: 100%;
+  border-radius: 6px;
+  margin: 0.5em 0;
+}
+
+img + br + .md-image-link,
+p > .md-image:only-child {
+  display: block;
+  text-align: center;
+}
+
+/* =========================================================================
+   Footnotes
+   ========================================================================= */
+
+sup.md-footnote {
+  color: var(--link-color);
+  background-color: #ede5d8;
+  padding: 1px 5px;
+  border-radius: 3px;
+  font-size: 0.85em;
+  cursor: pointer;
+  font-family: var(--heading-font);
+}
+
+sup.md-footnote:hover {
+  background-color: #e0d5c4;
+}
+
+.md-footnote-bottom {
+  font-size: 0.9em;
+  color: var(--meta-content-color);
+}
+
+.footnotes-area {
+  font-size: 0.9em;
+  color: var(--meta-content-color);
+  margin-top: 2em;
+  padding-top: 1em;
+  border-top: 1px solid var(--border-color);
+}
+
+.md-def-name {
+  color: var(--heading-color);
+  font-weight: 600;
+}
+
+.md-def-content {
+  color: var(--text-color);
+}
+
+/* =========================================================================
+   Table of Contents
+   ========================================================================= */
+
+.md-toc {
+  font-family: var(--heading-font);
+  font-size: 0.95em;
+  border: 1px solid var(--border-color);
+  border-radius: 8px;
+  padding: 1em 1.5em;
+  margin: 1em 0;
+  background-color: var(--blockquote-bg);
+}
+
+.md-toc-content {
+  margin: 0;
+}
+
+.md-toc-h1 {
+  font-weight: 600;
+}
+
+.md-toc a {
+  color: var(--text-color);
+  text-decoration: none;
+}
+
+.md-toc a:hover {
+  color: var(--link-color);
+}
+
+/* =========================================================================
+   YAML Front Matter
+   ========================================================================= */
+
+pre.md-meta-block {
+  font-family: var(--monospace);
+  font-size: 0.85em;
+  background-color: var(--code-bg);
+  border: 1px solid var(--code-border);
+  border-radius: 6px;
+  padding: 1em;
+  color: var(--meta-content-color);
+  margin-bottom: 2em;
+}
+
+/* =========================================================================
+   Metadata & Raw Blocks
+   ========================================================================= */
+
+.md-rawblock,
+.md-htmlblock-container {
+  border-radius: 6px;
+  background-color: var(--code-bg);
+  border: 1px solid var(--code-border);
+}
+
+.md-rawblock-tooltip {
+  background-color: var(--code-bg);
+  color: var(--text-color);
+}
+
+.md-comment {
+  color: var(--md-char-color);
+}
+
+.md-content.md-url,
+.md-meta-block {
+  color: var(--meta-content-color);
+}
+
+/* =========================================================================
+   Definition Lists
+   ========================================================================= */
+
+dd {
+  margin-left: 1.5em;
+  margin-bottom: 0.5em;
+}
+
+dt {
+  font-weight: 600;
+  color: var(--heading-color);
+}
+
+/* =========================================================================
+   Math / KaTeX
+   ========================================================================= */
+
+.MathJax_Display {
+  margin: 1em 0;
+}
+
+.md-math-block {
+  background-color: var(--code-bg);
+  border-radius: 6px;
+  padding: 0.5em;
+  margin: 1em 0;
+}
+
+.mathjax-block {
+  margin: 1em 0;
+}
+
+/* =========================================================================
+   Abbreviations
+   ========================================================================= */
+
+abbr {
+  text-decoration: underline dotted var(--md-char-color);
+  cursor: help;
+  color: var(--text-color);
+}
+
+/* =========================================================================
+   Keyboard Tag
+   ========================================================================= */
+
+kbd {
+  font-family: var(--monospace);
+  font-size: 0.85em;
+  background-color: #fff;
+  border: 1px solid var(--border-color);
+  border-bottom-width: 2px;
+  border-radius: 4px;
+  padding: 2px 6px;
+  color: var(--heading-color);
+}
+
+/* =========================================================================
+   Subscript / Superscript
+   ========================================================================= */
+
+sub, sup {
+  font-size: 0.8em;
+}
+
+/* =========================================================================
+   Sidebar
+   ========================================================================= */
+
+#typora-sidebar {
+  background-color: var(--side-bar-bg-color);
+  border-right: var(--window-border);
+  font-family: var(--heading-font);
+}
+
+#typora-sidebar .file-list-item,
+#typora-sidebar .file-tree-node {
+  padding: 6px 16px;
+  border-radius: 4px;
+  margin: 2px 8px;
+  color: var(--text-color);
+  border-bottom: 1px solid rgba(221, 210, 195, 0.4);
+}
+
+#typora-sidebar .file-list-item:hover,
+#typora-sidebar .file-tree-node:hover {
+  background-color: var(--item-hover-bg-color);
+  color: var(--item-hover-text-color);
+}
+
+#typora-sidebar .file-list-item.active,
+#typora-sidebar .file-tree-node.active {
+  background-color: var(--active-file-bg-color);
+  color: var(--active-file-text-color);
+  border-left: 3px solid var(--active-file-border-color);
+}
+
+.file-list-item-summary {
+  color: var(--meta-content-color);
+  font-size: 0.85em;
+}
+
+#typora-sidebar #outline-content .outline-item {
+  color: var(--text-color);
+}
+
+#typora-sidebar #outline-content .outline-item:hover {
+  color: var(--link-color);
+}
+
+.sidebar-footer {
+  background-color: var(--side-bar-bg-color);
+  border-top: var(--window-border);
+}
+
+/* Sidebar search */
+#file-library-search-input {
+  background-color: #fff;
+  border: 1px solid var(--border-color);
+  border-radius: 6px;
+  padding: 6px 10px;
+  font-family: var(--heading-font);
+  color: var(--text-color);
+}
+
+#file-library-search-input:focus {
+  border-color: var(--link-color);
+  box-shadow: 0 0 0 3px var(--selection-color);
+}
+
+/* =========================================================================
+   Header / Title Bar
+   ========================================================================= */
+
+header,
+.context-menu,
+.megamenu-content,
+footer {
+  font-family: var(--heading-font);
+  color: var(--text-color);
+}
+
+.megamenu-opened header {
+  background-color: var(--bg-color);
+}
+
+/* =========================================================================
+   Megamenu / Preferences
+   ========================================================================= */
+
+.megamenu-menu {
+  background-color: var(--bg-color);
+  box-shadow: 0 4px 20px rgba(64, 53, 42, 0.08);
+}
+
+.megamenu-content {
+  background-color: var(--bg-color);
+}
+
+.megamenu-menu-header {
+  border-bottom: var(--window-border);
+}
+
+.megamenu-menu-list li a {
+  color: var(--text-color);
+}
+
+.megamenu-menu-list li a:hover {
+  color: var(--link-color);
+  background-color: var(--active-file-bg-color);
+}
+
+.megamenu-menu-list li a.active {
+  color: var(--link-color);
+}
+
+/* =========================================================================
+   Context Menu
+   ========================================================================= */
+
+.context-menu {
+  background-color: #faf7f2;
+  border: 1px solid var(--border-color);
+  border-radius: 6px;
+  box-shadow: 0 4px 16px rgba(64, 53, 42, 0.1);
+}
+
+.context-menu.dropdown-menu .divider {
+  background-color: var(--border-color);
+}
+
+.context-menu li a {
+  color: var(--text-color);
+}
+
+.context-menu li a:hover {
+  background-color: var(--item-hover-bg-color);
+  color: var(--heading-color);
+}
+
+/* =========================================================================
+   Tooltips
+   ========================================================================= */
+
+.ty-tooltip {
+  background-color: var(--heading-color);
+  color: #f9f5ef;
+  border-radius: 4px;
+  padding: 4px 8px;
+  font-size: 0.85em;
+}
+
+/* =========================================================================
+   Dialog / Modal
+   ========================================================================= */
+
+.modal-content {
+  background-color: var(--bg-color);
+  border: var(--window-border);
+  border-radius: 8px;
+}
+
+.modal-header {
+  border-bottom: var(--window-border);
+}
+
+.modal-footer {
+  border-top: var(--window-border);
+}
+
+.btn-primary {
+  background-color: var(--link-color);
+  border-color: var(--primary-btn-border-color);
+  color: var(--primary-btn-text-color);
+  border-radius: 6px;
+  padding: 6px 16px;
+  font-family: var(--heading-font);
+  transition: background-color 0.15s ease;
+}
+
+.btn-primary:hover {
+  background-color: #a04f30;
+  border-color: #8a4228;
+}
+
+.btn-default {
+  background-color: #fff;
+  border: 1px solid var(--border-color);
+  color: var(--text-color);
+  border-radius: 6px;
+  padding: 6px 16px;
+  font-family: var(--heading-font);
+}
+
+.btn-default:hover {
+  background-color: var(--item-hover-bg-color);
+}
+
+.btn {
+  font-family: var(--heading-font);
+}
+
+/* =========================================================================
+   Notification
+   ========================================================================= */
+
+.md-notification-container {
+  background-color: #faf7f2;
+  border: 1px solid var(--border-color);
+  border-radius: 6px;
+  box-shadow: 0 4px 12px rgba(64, 53, 42, 0.08);
+  color: var(--text-color);
+}
+
+/* =========================================================================
+   Search Panel
+   ========================================================================= */
+
+#md-searchpanel {
+  background-color: var(--bg-color);
+  border-bottom: var(--window-border);
+  padding: 8px 16px;
+}
+
+#md-searchpanel input {
+  background-color: #fff;
+  border: 1px solid var(--border-color);
+  border-radius: 4px;
+  padding: 4px 8px;
+  font-family: var(--heading-font);
+  color: var(--text-color);
+}
+
+#md-searchpanel input:focus {
+  border-color: var(--link-color);
+  box-shadow: 0 0 0 3px var(--selection-color);
+}
+
+#md-searchpanel .btn {
+  border-radius: 4px;
+}
+
+.searchpanel-search-option-btn.active {
+  background-color: var(--active-file-bg-color);
+  color: var(--link-color);
+}
+
+/* =========================================================================
+   Auto-complete
+   ========================================================================= */
+
+.auto-suggest-container {
+  background-color: #faf7f2;
+  border: 1px solid var(--border-color);
+  border-radius: 6px;
+  box-shadow: 0 4px 12px rgba(64, 53, 42, 0.08);
+}
+
+.auto-suggest-container li {
+  padding: 4px 12px;
+  color: var(--text-color);
+}
+
+.auto-suggest-container li:hover,
+.auto-suggest-container li.active {
+  background-color: var(--active-file-bg-color);
+  color: var(--link-color);
+}
+
+/* =========================================================================
+   Focus Mode
+   ========================================================================= */
+
+.on-focus-mode .md-end-block:not(.md-focus):not(.md-focus-container) * {
+  color: var(--md-char-color) !important;
+}
+
+.on-focus-mode .md-end-block:not(.md-focus) img,
+.on-focus-mode .md-task-list-item:not(.md-focus-container) > input {
+  opacity: 0.3;
+}
+
+.on-focus-mode blockquote {
+  border-left-color: rgba(196, 160, 106, 0.4);
+}
+
+.on-focus-mode .md-fences {
+  border-color: rgba(221, 210, 195, 0.5);
+}
+
+/* =========================================================================
+   Typewriter Mode
+   ========================================================================= */
+
+#typora-source .CodeMirror-lines {
+  max-width: 800px;
+  margin: 0 auto;
+}
+
+/* =========================================================================
+   Source Code Mode
+   ========================================================================= */
+
+.cm-s-typora-default .cm-header {
+  color: var(--heading-color);
+}
+
+.cm-s-typora-default .cm-link {
+  color: var(--link-color);
+}
+
+.cm-s-typora-default .cm-em {
+  color: var(--text-color);
+  font-style: italic;
+}
+
+.cm-s-typora-default .cm-strong {
+  color: var(--heading-color);
+  font-weight: 700;
+}
+
+#typora-source {
+  font-family: var(--monospace);
+  color: var(--text-color);
+}
+
+/* =========================================================================
+   Mermaid & Diagrams
+   ========================================================================= */
+
+.md-diagram-panel {
+  background-color: var(--code-bg);
+  border: 1px solid var(--code-border);
+  border-radius: 6px;
+  padding: 14px;
+  margin: 1em 0;
+}
+
+.md-diagram-panel svg {
+  max-width: 100%;
+}
+
+/* =========================================================================
+   Emoji
+   ========================================================================= */
+
+.md-emoji-input {
+  border: 1px solid var(--border-color);
+  border-radius: 4px;
+}
+
+/* =========================================================================
+   Typora UI Elements
+   ========================================================================= */
+
+#write .md-focus .md-diagram-panel,
+#write .md-focus pre.md-fences {
+  border-color: var(--accent-color);
+}
+
+.md-image > .md-meta {
+  color: var(--meta-content-color);
+  font-family: var(--monospace);
+  font-size: 0.85em;
+}
+
+.md-expand.md-image > .md-meta {
+  background-color: var(--code-bg);
+  border-radius: 4px;
+  padding: 4px 8px;
+}
+
+.ty-cursor {
+  background-color: var(--heading-color);
+}
+
+.typora-node .typora-export-content {
+  padding-top: 0;
+}
+
+/* =========================================================================
+   Scrollbar
+   ========================================================================= */
+
+::-webkit-scrollbar {
+  width: 8px;
+  height: 8px;
+}
+
+::-webkit-scrollbar-track {
+  background: transparent;
+}
+
+::-webkit-scrollbar-thumb {
+  background-color: #c8bbab;
+  border-radius: 4px;
+  border: 2px solid transparent;
+  background-clip: content-box;
+}
+
+::-webkit-scrollbar-thumb:hover {
+  background-color: #a89882;
+}
+
+/* =========================================================================
+   Footer Bar
+   ========================================================================= */
+
+footer.ty-footer {
+  border-top: var(--window-border);
+  background-color: var(--bg-color);
+  color: var(--meta-content-color);
+  font-size: 0.85em;
+  font-family: var(--heading-font);
+}
+
+.ty-footer .footer-item:hover {
+  color: var(--text-color);
+}
+
+/* =========================================================================
+   Unibody Style (macOS)
+   ========================================================================= */
+
+.unibody-window header {
+  background-color: var(--side-bar-bg-color);
+}
+
+/* =========================================================================
+   Preferences Window
+   ========================================================================= */
+
+.ty-preferences .window-header {
+  background-color: var(--side-bar-bg-color);
+  border-bottom: var(--window-border);
+}
+
+.ty-preferences .nav-group-item.active {
+  background-color: var(--active-file-bg-color);
+  color: var(--link-color);
+}
+
+/* =========================================================================
+   Word Count & Info Panel
+   ========================================================================= */
+
+.info-panel-tab-border {
+  background-color: var(--link-color);
+}
+
+/* =========================================================================
+   Quick Open
+   ========================================================================= */
+
+.ty-quick-open {
+  background-color: #faf7f2;
+  border: 1px solid var(--border-color);
+  border-radius: 8px;
+  box-shadow: 0 8px 32px rgba(64, 53, 42, 0.12);
+}
+
+.ty-quick-open input {
+  border-bottom: 1px solid var(--border-color);
+  font-family: var(--heading-font);
+  color: var(--text-color);
+}
+
+.ty-quick-open-item:hover,
+.ty-quick-open-item.active {
+  background-color: var(--active-file-bg-color);
+}
+
+/* =========================================================================
+   Export Styles
+   ========================================================================= */
+
+.typora-export {
+  background-color: var(--bg-color);
+}
+
+.typora-export #write {
+  padding-bottom: 2em;
+}
+
+.typora-export h1, .typora-export h2,
+.typora-export h3, .typora-export h4,
+.typora-export h5, .typora-export h6 {
+  color: var(--heading-color);
+}
+
+.typora-export li,
+.typora-export p {
+  line-height: 1.8;
+}
+
+/* =========================================================================
+   Print Styles
+   ========================================================================= */
+
+@media print {
+  html {
+    font-size: 13px;
+  }
+
+  body {
+    color: #2e211a;
+    background: #fff;
+    font-family: 'Source Serif 4', Georgia, 'Palatino Linotype', Palatino, serif;
+  }
+
+  #write {
+    max-width: 100%;
+    padding: 0;
+  }
+
+  h1, h2, h3, h4, h5, h6 {
+    color: #2e211a;
+    page-break-after: avoid;
+    font-family: 'Space Grotesk', -apple-system, BlinkMacSystemFont, sans-serif;
+  }
+
+  h1 {
+    border-bottom-color: #c8bbab;
+  }
+
+  h2::after {
+    background-color: #c4a06a;
+  }
+
+  strong {
+    color: #2e211a;
+  }
+
+  a {
+    color: #994d2f;
+    text-decoration: underline;
+  }
+
+  pre.md-fences,
+  .md-fences {
+    border: 1px solid #ddd2c3;
+    background-color: #f5f0e8;
+    page-break-inside: avoid;
+  }
+
+  code, tt {
+    background-color: #f0e9df;
+    color: #b85c38;
+    border: none;
+  }
+
+  blockquote {
+    border-left-color: #c4a06a;
+    background-color: transparent;
+    color: #5a4a3a;
+  }
+
+  table {
+    page-break-inside: avoid;
+  }
+
+  thead {
+    background-color: #f0e9df;
+  }
+
+  th, td {
+    border-color: #ddd2c3;
+  }
+
+  tr:nth-child(even) {
+    background-color: #f9f5ef;
+  }
+
+  mark {
+    background-color: #fef3c7;
+    border: none;
+  }
+
+  hr {
+    background: none;
+  }
+
+  hr::after {
+    color: #c4a06a;
+  }
+
+  img {
+    max-width: 100% !important;
+    page-break-inside: avoid;
+  }
+
+  sup.md-footnote {
+    background-color: transparent;
+    border: 1px solid #ddd2c3;
+  }
+
+  pre, code, blockquote, table, img {
+    page-break-inside: avoid;
+  }
+
+  #typora-sidebar,
+  .typora-export-show-outline {
+    display: none !important;
+  }
+}
